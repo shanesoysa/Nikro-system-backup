@@ -3,7 +3,7 @@
 	session_start();
 	$db = mysqli_connect('localhost', 'root', '', 'user_db');
 
-	// initialize variables
+	//git check
 	$Username = "";
 	$Password = "";
 	$Companyid= "";
