@@ -141,6 +141,10 @@
 
 		$rec65 ="SELECT USER_LOGIN_ATTEMPTS FROM user_details WHERE USER_LOGIN_NAME='".$Username."' AND USER_LOGIN_ATTEMPTS<3 limit 1";
 
+		$blockedsql="SELECT USER_STATUS FROM user_details WHERE USER_LOGIN_NAME='".$Username."' AND USER_PASSWORD='".$Password."' AND USER_STATUS=3 limit 1";
+
+		$resultblockedsql=mysqli_query($db,$blockedsql);
+
 		
 		$results65 = mysqli_query($db,$rec65);
 
@@ -255,6 +259,13 @@
 		
 
 		}
+
+		else if(mysqli_num_rows($resultblockedsql)==1){
+
+			header('location:blocked.php');
+
+		}
+
 		else if(mysqli_num_rows($results65)== 1){
 
 			
