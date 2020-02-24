@@ -25,16 +25,16 @@
 		$Usertype = $_POST['Usertype'];
 		$Usergroup = $_POST['Usergroup'];
 
-		$result = mysqli_query($db, "INSERT INTO user_details (USER_LOGIN_NAME, USER_PASSWORD, USER_COMPANY_ID, USER_TYPE,USER_GROUP) VALUES ('$Username', '$Password', '$Companyid', '$Usertype', '$Usergroup')"); 
+		$insert_query = mysqli_query($db, "INSERT INTO user_details (USER_LOGIN_NAME, USER_PASSWORD, USER_COMPANY_ID, USER_TYPE,USER_GROUP) VALUES ('$Username', '$Password', '$Companyid', '$Usertype', '$Usergroup')"); 
 
 		
 
-		if($result)
+		if($insert_query)
 		{
 			$last_id = $db->insert_id;
-			$result_user_p = mysqli_query($db, "INSERT INTO user_p_details (RECORD_ID,USER_COMPANY_ID) VALUES ('$last_id','$Companyid')");
+			$insert_into_user_p = mysqli_query($db, "INSERT INTO user_p_details (RECORD_ID,USER_COMPANY_ID) VALUES ('$last_id','$Companyid')");
 
-			if($result_user_p){
+			if($insert_into_user_p){
 			$_SESSION['message'] = "User created successfully !"; 
 			header('location: usermanagement.php');
 		}
@@ -63,9 +63,9 @@
 
 
 	
-	$updatee=mysqli_query($db, "UPDATE user_details SET USER_LOGIN_NAME='$Username', USER_PASSWORD='$Password', USER_COMPANY_ID='$Companyid', USER_TYPE='$Usertype', USER_GROUP=' $Usergroup', USER_STATUS= ' $Userstatus' WHERE RECORD_ID='$id' ");
+	$update_one_user=mysqli_query($db, "UPDATE user_details SET USER_LOGIN_NAME='$Username', USER_PASSWORD='$Password', USER_COMPANY_ID='$Companyid', USER_TYPE='$Usertype', USER_GROUP=' $Usergroup', USER_STATUS= ' $Userstatus' WHERE RECORD_ID='$id' ");
 
-	if($updatee){
+	if($update_one_user){
 	
 	$_SESSION['message'] = "Updated!"; 
 	header('location: usermanagement.php');
@@ -93,12 +93,9 @@
 	$birthday=$_POST['birthday'];
 	$email=$_POST['email'];
 
+	$update_one_user=mysqli_query($db, "UPDATE user_p_details SET USER_DISPLAY_NAME='$dispalayname', USER_TELEPHONE1='$telephone1', USER_TELEPHONE2='$telephone2', USER_ADDRESS_1='$address1', USER_ADDRESS_2=' $address2', USER_ADDRESS_3=' $address3' , USER_ADDRESS_4='$address4', USER_BIRTHDAY='$birthday', USER_EMAIL='$email' WHERE RECORD_ID='$id'");
 
-
-	
-	$updatee=mysqli_query($db, "UPDATE user_p_details SET USER_DISPLAY_NAME='$dispalayname', USER_TELEPHONE1='$telephone1', USER_TELEPHONE2='$telephone2', USER_ADDRESS_1='$address1', USER_ADDRESS_2=' $address2', USER_ADDRESS_3=' $address3' , USER_ADDRESS_4='$address4', USER_BIRTHDAY='$birthday', USER_EMAIL='$email' WHERE RECORD_ID='$id'");
-
-	if($updatee){
+	if($update_one_user){
 	
 	$_SESSION['messageone'] = "Updated!"; 
 	header('location: index.php');
@@ -131,44 +128,35 @@
 		date_default_timezone_set('Asia/Colombo');
 		$currentlogintime=date('Y/m/d h:i:s a', time());
 		
-		
+		$username_password_validation = "SELECT * FROM user_details WHERE USER_LOGIN_NAME='".$Username."' AND USER_PASSWORD='".$Password."' limit 1 ";
 
-		
+		$check_active_users ="SELECT USER_STATUS FROM user_details WHERE USER_LOGIN_NAME='".$Username."' AND USER_PASSWORD='".$Password."' AND USER_STATUS<2 limit 1";
 
-		$rec = "SELECT * FROM user_details WHERE USER_LOGIN_NAME='".$Username."' AND USER_PASSWORD='".$Password."' limit 1 ";
-
-		$rec3 ="SELECT USER_STATUS FROM user_details WHERE USER_LOGIN_NAME='".$Username."' AND USER_PASSWORD='".$Password."' AND USER_STATUS<2 limit 1";
-
-		$rec65 ="SELECT USER_LOGIN_ATTEMPTS FROM user_details WHERE USER_LOGIN_NAME='".$Username."' AND USER_LOGIN_ATTEMPTS<3 limit 1";
+		$check_login_attempts ="SELECT USER_LOGIN_ATTEMPTS FROM user_details WHERE USER_LOGIN_NAME='".$Username."' AND USER_LOGIN_ATTEMPTS<3 limit 1";
 
 		$blockedsql="SELECT USER_STATUS FROM user_details WHERE USER_LOGIN_NAME='".$Username."' AND USER_PASSWORD='".$Password."' AND USER_STATUS=3 limit 1";
 
 		$resultblockedsql=mysqli_query($db,$blockedsql);
 
 		
-		$results65 = mysqli_query($db,$rec65);
+		$check_login_attempts_results = mysqli_query($db,$check_login_attempts);
 
 
+		$check_active_users_results = mysqli_query($db,$check_active_users);
 
-
-
-
-
-		$results2 = mysqli_query($db,$rec3);
-
-		$results = mysqli_query($db,$rec);
-		if (mysqli_num_rows($results)== 1 && mysqli_num_rows($results2)== 1) {
+		$username_password_validation_results = mysqli_query($db,$username_password_validation);
+		if (mysqli_num_rows($username_password_validation_results)== 1 && mysqli_num_rows($check_active_users_results)== 1) {
 
 		
          $_SESSION['login_user'] = $Username;
 
-			$rec2 = "UPDATE user_details SET USER_LASTLOGIN_DATETIME='$currentlogintime' WHERE USER_LOGIN_NAME='$Username' ";
-			$rec45 = "UPDATE user_details SET USER_LOGIN_ATTEMPTS='0' WHERE USER_LOGIN_NAME='$Username' ";
+			$get_current_login_dateTime = "UPDATE user_details SET USER_LASTLOGIN_DATETIME='$currentlogintime' WHERE USER_LOGIN_NAME='$Username' ";
+			$reset_login_attemps = "UPDATE user_details SET USER_LOGIN_ATTEMPTS='0' WHERE USER_LOGIN_NAME='$Username' ";
 
 			
-			$rec78 = "UPDATE user_details SET USER_STATUS='1' WHERE USER_LOGIN_NAME='$Username' ";
+			$reset_user_status = "UPDATE user_details SET USER_STATUS='1' WHERE USER_LOGIN_NAME='$Username' ";
 
-		if(mysqli_query($db,$rec2) && mysqli_query($db,$rec78) && mysqli_query($db,$rec45)){
+		if(mysqli_query($db,$get_current_login_dateTime) && mysqli_query($db,$reset_user_status) && mysqli_query($db,$reset_login_attemps)){
 
 			$login_display_name=mysqli_query($db,"SELECT user_p_details.USER_DISPLAY_NAME FROM user_p_details INNER JOIN user_details ON user_p_details.RECORD_ID=user_details.RECORD_ID WHERE user_details.USER_LOGIN_NAME='$Username'");
 
@@ -266,7 +254,7 @@
 
 		}
 
-		else if(mysqli_num_rows($results65)== 1){
+		else if(mysqli_num_rows($check_login_attempts_results)== 1){
 
 			
 			
@@ -285,37 +273,24 @@
 
 		$_SESSION['message'] = "You have ".$realcount. " login attempts remaining.Try again!";
 
-		$rcc3 ="UPDATE user_details SET USER_LOGIN_ATTEMPTS=USER_LOGIN_ATTEMPTS+1 WHERE USER_LOGIN_NAME='$Username'";
-		$results23 = mysqli_query($db,$rcc3);
+		$increment_login_attemps ="UPDATE user_details SET USER_LOGIN_ATTEMPTS=USER_LOGIN_ATTEMPTS+1 WHERE USER_LOGIN_NAME='$Username'";
+		$increment_login_attemp_results = mysqli_query($db,$increment_login_attemps);
 
-		
-		
 		header('location:index.php');
 
-
-	
 		}
 
-
-			
-
 		else{
-
-
 		$result23 ="UPDATE user_details SET USER_STATUS='2' WHERE USER_LOGIN_NAME='$Username'";
 		$rec53 = "SELECT * FROM user_details WHERE USER_LOGIN_NAME='".$Username."' limit 1 ";
 		$sds=mysqli_query($db,$rec53);
 
-		
-
-		 if(mysqli_num_rows($sds)== 1){
+		if(mysqli_num_rows($sds)== 1){
 		 	
 				if(mysqli_query($db,$result23))
 				{
 				unset($loginattempts);
 				$_SESSION['message'] = "You are temporarily blocked ! contact administrator"; 
-
-				
 
 				header('location:index.php');
 						
@@ -327,7 +302,7 @@
 				header('location:index.php');
 						
 				}
-			}
+		}
 		else{
 
 			$_SESSION['message'] = "Incorrect Username or Password"; 
