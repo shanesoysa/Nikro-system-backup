@@ -1,15 +1,47 @@
 <?php  include('php_code.php'); ?>
-
-
 <!DOCTYPE html>
-
-<html>
+<html lang="en">
 <head>
-  <title>
-    NMS
-  </title>
-  <link rel="stylesheet" type="text/css" href="style.css">
-  <script type="text/JavaScript"> 
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bootstrap Simple Login Form</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
+<style type="text/css">
+body{
+    background-image: url("assets/img/img2.jpeg");
+    background-repeat: no-repeat, repeat;
+}
+	.login-form {
+		width: 500px;
+        margin: 200px auto;
+        
+	}
+    .login-form form {
+    	margin-bottom: 15px;
+        background: #f7f7f7;
+        box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+        padding: 30px;
+        border-radius: 10px;
+    }
+    .form-control, .btn {
+        min-height: 38px;
+        border-radius: 2px;
+    }
+    .btn {        
+        font-size: 15px;
+        font-weight: bold;
+        border-radius: 12px;
+        width: 20%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+</style>
+
+<script type="text/JavaScript">
 
 function validateForm() {
   var x = document.forms["loginform"]["us"].value;
@@ -30,61 +62,34 @@ function validateForm() {
 }
 
 </script>
-  
+
 </head>
 <body>
-  <img src="assets/img/img2.jpeg">
-  
+<div class="login-form">
+    <form action="php_code.php"  method="post" name="loginform" onsubmit="return validateForm()">
+        <div class="text-center">
+        <img src="assets/img/nikro.png" style="height: 130px; width: 230px;">
+        <br></br>       
+        </div>
+        <div class="form-group">
+            <input type="text" class="form-control" placeholder="Username" name="us" required="required">
+        </div>
+        <div class="form-group">
+            <input type="password" class="form-control" placeholder="Password" name="pass" required="required">
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-success btn-block" name="login_user">Log in</button>
+        </div>
 
-  <div class="header">
-
-  
-  </div>
- 
-  <div class="login-form">
-  <form method="post" action="php_code.php" name="loginform" onsubmit="return validateForm()">
-<!--    <?php include('errors.php'); ?>  -->
-<!-- <h3><center>Account login</center></h3> -->
-
-
-    <div class="input-group1">
-      <!-- <label><b>Username </b></label> -->
-      <img src="assets/img/nikro.png" style="height: 130px;
-    width: 231px;">
-      <br>
-      <br>
-      
-      
-
-
-      <input type="text" placeholder="Username" name="us" >
-    </div>
-    <div class="input-group1">
-      <!-- <label><b>Password</b></label> -->
-      <input type="password" placeholder="Password" name="pass">
-    </div>
-    <div class="input-group1">
-      <button type="submit" class="btn" 
-     name="login_user" id="loginbtn" style=" margin-right: 250px; margin-left: 227px; border-radius: 10px; padding: 10px 34px; font-size: 25px;">Login</button>
-    </div>
-
-  <?php if (isset($_SESSION['message'])): ?>
-  <div class="msg2">
+    <?php if (isset($_SESSION['message'])): ?>
+    <div class="alert alert-danger text-center" role="alert">
     <?php
       echo $_SESSION['message']; 
       unset($_SESSION['message']);
-    
-    
     ?>
-  <?php endif?>
-
-  </div>
-
-
-  </form>
-  </div>
-
-
-    
+    </div>
+  <?php endif?>    
+    </form>
+</div>
 </body>
-</html>
+</html>                                		                            
