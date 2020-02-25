@@ -28,7 +28,7 @@ switch ($USERGROUP) {
         break;
 
     default:
-        echo "seeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee".$USERGROUP."asdasdas";
+        echo "r".$USERGROUP."asdasdas";
 }
 
 
