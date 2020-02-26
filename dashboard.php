@@ -25,6 +25,8 @@
 
 <body class="">
   <div class="wrapper ">
+     <div class="navbar-toggle">
+
     <div class="sidebar" data-color="white" data-active-color="danger">
       <!--
         Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red | yellow"
@@ -73,10 +75,22 @@
 
             <div class="navbar-toggle">
 
+                     <form method='post' action="php_code.php">
+            
+                    <button name="logout" class="btn btn-info">Logout</button>
+                    </form>
+
               <button type="button" class="navbar-toggler">
-                <span class="navbar-toggler-bar bar1"></span>
-                <span class="navbar-toggler-bar bar2"></span>
-                <span class="navbar-toggler-bar bar3"></span>
+                <span class="navbar-toggler-bar bar1">
+                 
+
+                </span>
+                <span class="navbar-toggler-bar bar2">
+                  
+                </span>
+                <span class="navbar-toggler-bar bar3">
+                  
+                </span>
               </button>
             </div>
            <!--  <a class="navbar-brand" href="#pablo"> Logout</a> -->
@@ -97,42 +111,31 @@
                     </a>
                     </h2>
                     </div>
-
+                    <br>
 
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-bar navbar-kebab"></span>
-<!--             <span class="navbar-toggler-bar navbar-kebab"></span>
-            <span class="navbar-toggler-bar navbar-kebab"></span> -->
+            <span class="navbar-toggler-bar navbar-kebab"></span>
+            <span class="navbar-toggler-bar navbar-kebab"></span>
           </button>
           <div class="collapse navbar-collapse justify-content-end" id="navigation">
  
             <ul class="navbar-nav">
               <li class="nav-item">
                 <a class="nav-link btn-magnify" href="#pablo">
-                  <!-- <i class="nc-icon nc-layout-11"></i> -->
+                <!--   <i class="nc-icon nc-layout-11"></i> -->
                   <p>
                     <span class="d-lg-none d-md-block">Stats</span>
                   </p>
                 </a>
               </li>
+              <form method='post' action="php_code.php">
+            
+                    <button name="logout" class="btn btn-info">Logout</button>
+                    </form>
     
        
 
-                    <form method='post' action="php_code.php">
-            
-                    <button name="logout" style=" 
-                    padding: 10px;
-                    font-size: 15px;
-                    color: white;
-                    background: #5F9EA0;
-                    border: none;
-                    border-radius: 5px;
-                    margin-left: 600px;
-                    margin-top: -50px;
-
-
-                    ">Logout</button>
-                    </form>
                     <span class="d-lg-none d-md-block">Some Actions</span>
                   </p>
                 </a>
@@ -161,6 +164,7 @@
 
 
 </div> -->
+
 <br>
 <br>
   <div class="content">
@@ -195,6 +199,7 @@
     </div>
   </div>
   <!--   Core JS Files   -->
+
   <script src="../assets/js/core/jquery.min.js"></script>
   <script src="../assets/js/core/popper.min.js"></script>
   <script src="../assets/js/core/bootstrap.min.js"></script>
