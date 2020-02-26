@@ -152,12 +152,15 @@
     <?php if($update==false):?>
 
 
-    <form method="post" name='myform' action="php_code.php" style=" margin-left: 402px;" >
+  <form method="post" name='myform' action="php_code.php" style=" margin-left: 402px;" >
+
 		<input type="hidden" name="ID" value="">
+    
 		<div class="input-group">
 			<label>Username</label>
 			<input type="text" name="Username" value="">
 		</div>
+
 		<div class="input-group">
 			<label>Password</label>
 			<input type="Password" name="Password" value="">

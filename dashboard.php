@@ -83,7 +83,7 @@
           </div>
                     <?php if (isset($_SESSION['name'])): ?>
                     <div class="msg8" style=" margin-right: -100px; margin-top: 20px;">
-                    <h2><a href="/PHPproject/oneusermanagement.php?useredit=<?php echo $_SESSION['loginid']; ?>">
+                    <h2><a href="oneusermanagement.php?useredit=<?php echo $_SESSION['loginid']; ?>">
                     <?php
                     if($_SESSION['name']==''){
                       header('location:oneusermanagement.php');

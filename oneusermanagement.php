@@ -29,7 +29,7 @@
 <head>
   <title>Nikro Management Services </title>
 
-    <link rel="stylesheet" type="text/css" href="style.css">
+    
 
 
 
@@ -47,12 +47,41 @@
   <link href="assets/css/paper-dashboard.css?v=2.0.0" rel="stylesheet" />
   <!-- CSS Just for demo purpose, don't include it in your project -->
   <link href="assets/demo/demo.css" rel="stylesheet" />
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
+
+<style type="text/css">
+  .one_user_management-form {
+        width: 500px;
+        margin: 10px auto;
+        
+  }
+    .one_user_management-form form {
+      margin-bottom: 15px;
+        background: #f7f7f7;
+        box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+        padding: 30px;
+        border-radius: 10px;
+    }
+    .form-control, .btn {
+        min-height: 38px;
+        border-radius: 2px;
+    }
+    .btn {        
+        font-size: 15px;
+        font-weight: bold;
+        border-radius: 12px;
+        width: 40%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+</style>
+
 </head>
 <body>
   <div class="sidebar" data-color="white" data-active-color="danger">
-      <!--
-        Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red | yellow"
-    -->
       <div class="logo">
         <a href="http://www.creative-tim.com" class="simple-text logo-mini">
           <div class="logo-image-small">
@@ -61,10 +90,9 @@
         </a>
         <a href="http://www.creative-tim.com" class="simple-text logo-normal">
          NMS
-    
         </a>
-      </div>
-<div class="sidebar-wrapper">
+  </div>
+  <div class="sidebar-wrapper">
         <ul class="nav">
           <li class="active ">
             <a href="./dashboard.php">
@@ -72,101 +100,85 @@
               <p>Dashboard</p>
             </a>
           </li>
-
           <li>
             <a href="./list.php">
               <i class="nc-icon nc-single-02"></i>
               <p>User Profile</p>
             </a>
           </li>
-
         </ul>
       </div>
-    </div>
-
-    <div class="formoneuser">
-    <form  method="post" name='userupdate' action="php_code.php" style=" margin-left: 402px;">
-
-
-    <input type="hidden" name="ID" value="<?php echo $ID; ?>">
-    <div class="input-group">
-      <label>User Display Name :</label>
-      <input type="text" name="displayname" value="<?php echo $Userdisplayname; ?>">
-    </div>
-
-    <div class="input-group">
-      <label>Company ID :</label>
-      <input type="text" name="companyidone" value="<?php echo $Companyid; ?>" readonly>
-    </div>
-
-    <div class="input-group">
-     <label>Telephone 1 :</label>
-    <input type="text" name="telephone1" value="<?php echo $telephone1; ?>">
-    </div>
-
-    <div class="input-group">
-      <label>Telephone 2 :</label>
-      <input type="text" name="telephone2" value="<?php echo $telephone2; ?>">
-    </div>
-
-    <div class="input-group">
-      <label>Address 1 :</label>
-      <input type="text" name="address1" value="<?php echo $address1; ?>">
-    </div>
-
-     
-    <div class="input-group">
-      <label>Address 2 :</label>
-    <input type="text" name="address2" value="<?php echo $address2; ?>">
-  </div>
-
-       
-    <div class="input-group">
-      <label>Address 3 :</label>
-    <input type="text" name="address3" value="<?php echo $address3; ?>">
-  </div>
-
-      
-    <div class="input-group">
-       <label>Address 4 :</label>
-    <input type="text" name="address4" value="<?php echo $address4; ?>">
   </div>
 
 
-    <div class="input-group">
-        <label>Birth Day :</label>
-    <input type="date" name="birthday" value="<?php echo $birthday; ?>">
-  </div>
+  <div class="one_user_management-form">
 
+    <form  method="post" name='userupdate' action="php_code.php">
 
-    
-    <div class="input-group">
-      <label> E-mail :</label>
-    <input type="text" name="email" value="<?php echo $email; ?>">
-  </div>
-
-
-
-    
-    <div class="input-group">
-    <button class="btn" type="submit" name="updateoneuser"style="background: #556B2F;" >update profile </button>
-  
-
-
-  <?php if (isset($_SESSION['messageone'])): ?>
-  <div class="msg">
-    <?php 
-      echo $_SESSION['messageone']; 
-      unset($_SESSION['messageone']);
-    ?>
+      <input type="hidden"  class="form-control" name="ID" value="<?php echo $ID; ?>">
+      <div class="form-group">
+        <label>User Display Name :</label>
+        <input type="text" name="displayname" class="form-control" value="<?php echo $Userdisplayname; ?>">
       </div>
-  <?php endif ?>
 
-</div>
+      <div class="form-group">
+        <label>Company ID :</label>
+        <input type="text" class="form-control" name="companyidone" value="<?php echo $Companyid; ?>" readonly>
+      </div>
 
+      <div class="form-group">
+       <label>Telephone 1 :</label>
+      <input type="text" class="form-control" name="telephone1" value="<?php echo $telephone1; ?>">
+      </div>
 
+      <div class="form-group">
+        <label>Telephone 2 :</label>
+        <input type="text" class="form-control" name="telephone2" value="<?php echo $telephone2; ?>">
+      </div>
 
+      <div class="form-group">
+        <label>Address 1 :</label>
+        <input type="text" class="form-control" name="address1" value="<?php echo $address1; ?>">
+      </div>
+     
+      <div class="form-group">
+        <label>Address 2 :</label>
+      <input type="text" class="form-control" name="address2" value="<?php echo $address2; ?>">
+      </div>
 
+      <div class="form-group">
+        <label>Address 3 :</label>
+      <input type="text" class="form-control" name="address3" value="<?php echo $address3; ?>">
+      </div>
+      
+      <div class="form-group">
+         <label>Address 4 :</label>
+      <input type="text" class="form-control" name="address4" value="<?php echo $address4; ?>">
+      </div>
+
+      <div class="form-group">
+          <label>Birth Day :</label>
+      <input type="date" class="form-control" name="birthday" value="<?php echo $birthday; ?>">
+      </div>
+    
+      <div class="form-group">
+        <label> E-mail :</label>
+      <input type="text" class="form-control" name="email" value="<?php echo $email; ?>">
+      </div>
+
+      <div class="form-group">
+      <button class="btn btn-success btn-block" type="submit" name="updateoneuser" >update profile </button>
+
+      <?php if (isset($_SESSION['messageone'])): ?>
+      <div class="alert alert-success text-center" role="alert">
+        <?php 
+          echo $_SESSION['messageone']; 
+          unset($_SESSION['messageone']);
+        ?>
+      </div>
+    <?php endif ?>
+    </form>
+  </div>
 
 </body>
 </html>
