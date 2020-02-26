@@ -148,14 +148,11 @@
 
 
 
-
-    <?php if($update==false):?>
-
+<!-- Add new user ------------------------------------------------------------>
+  <?php if($update==false):?>
 
   <form method="post" name='myform' action="php_code.php" style=" margin-left: 402px;" >
 
-		<input type="hidden" name="ID" value="">
-    
 		<div class="input-group">
 			<label>Username</label>
 			<input type="text" name="Username" value="">
@@ -182,36 +179,33 @@
     </div>
 
     <div class="input-group">
-      
-    <div id="userstatus" style="display: none;">
-    <label>User Status</label>
+      <button class="btn" type="submit" name="save" >Save</button>
     </div>
-    <input type="hidden" name="Userstatus" value="">
-    <div class="input-group">
-    <button class="btn" type="submit" name="save" >Save</button>
-     </div>
         
-  <?php if (isset($_SESSION['message'])): ?>
-  <div class="msg">
-    <?php 
-      echo $_SESSION['message']; 
-      unset($_SESSION['message']);
-    ?>
+    <?php if (isset($_SESSION['message'])): ?>
+      <div class="msg">
+        <?php 
+          echo $_SESSION['message']; 
+          unset($_SESSION['message']);
+        ?>
       </div>
-    </form>
-  <?php endif ?>
+    <?php endif ?>
+
+  </form>
   
-
-
-    <?php elseif ($update==true && $resetpw==false && $userst==false):?>
+<!-- --------------------------------------------------------------------------------------------->
+<!-- Update user -->
+<?php elseif ($update==true && $resetpw==false && $userst==false):?>
 
   <form method="post" name='myform' action="php_code.php" style=" margin-left: 402px;" >
 
     <input type="hidden" name="ID" value="<?php echo $ID; ?>">
+
     <div class="input-group">
       <label>Username</label>
       <input type="text" name="Username" value="<?php echo $Username; ?>">
     </div>
+
     <div class="input-group">
       <label>Password</label>
       <input type="Password" name="Password" value="<?php echo $Password; ?>">
@@ -233,183 +227,137 @@
     </div>
 
     <div class="input-group">
-    <label>User Status</label>
-    <input type="Number" name="Userstatus" value="<?php echo $Userstatus; ?>">
-    <div class="input-group">
-    <button class="btn" type="submit" name="update" style="background: #556B2F;" >update</button>
-     
+      <button class="btn" type="submit" name="update">update</button>     
     </div>
 
-          <?php if (isset($_SESSION['message'])): ?>
-  <div class="msg">
-    <?php 
-      echo $_SESSION['message']; 
-      unset($_SESSION['message']);
-    ?>
-      </div>
-  <?php endif ?>
+
+      <?php if (isset($_SESSION['message'])): ?>
+        <div class="msg">
+          <?php 
+            echo $_SESSION['message']; 
+            unset($_SESSION['message']);
+          ?>
+        </div>
+      <?php endif ?>
+
   </form>
 
-    <?php elseif ($resetpw==true):?>
+<!-- --------------------------------------------------------------------------------------------->
 
-     <form method="post" name='myform' action="php_code.php" style=" margin-left: 402px;" onsubmit="return validateconfirmpassword()" >
+<?php elseif ($resetpw==true):?>
 
+  <form method="post" name='myform' action="php_code.php" style=" margin-left: 402px;" onsubmit="return validateconfirmpassword()" >
 
     <input type="hidden" name="ID" value="<?php echo $ID; ?>">
+
     <div class="input-group">
       <label>Username</label>
       <input type="text" name="Username" readonly value="<?php echo $Username; ?>">
     </div>
+
     <div class="input-group">
       <label>New Password</label>
       <input type="Password" id="pw" name="Password" value="">
     </div>
 
-
     <div class="input-group">
-     
-    <input type="hidden" name="Companyid" value="<?php echo $Companyid; ?>">
+      <button class="btn" type="submit" name="update" onclick="return validateconfirmpassword()" style="background: #556B2F;" >update</button>
     </div>
 
-    <div class="input-group">
-      
-      <input type="hidden" name="Usertype" value="<?php echo $Usertype; ?>">
-    </div>
-
-    <div class="input-group">
-      
-      <input type="hidden" name="Usergroup" value="<?php echo $Usergroup; ?>">
-    </div>
-
-    <div class="input-group">
-   
-    <input type="hidden" name="Userstatus" value="<?php echo $Userstatus; ?>">
-    <div class="input-group">
-    <button class="btn" type="submit" name="update" onclick="return validateconfirmpassword()" style="background: #556B2F;" >update</button>
-
-     
-    </div>
-
-
-          <?php if (isset($_SESSION['message'])): ?>
-  <div class="msg">
-    <?php 
-      echo $_SESSION['message']; 
-      unset($_SESSION['message']);
-    ?>
+    <?php if (isset($_SESSION['message'])): ?>
+      <div class="msg">
+        <?php 
+        echo $_SESSION['message']; 
+        unset($_SESSION['message']);
+      ?>
       </div>
-  <?php endif ?>
+    <?php endif ?>
   </form>
 
-    <?php elseif ($userst==true):?>
 
-     <form method="post" name='myform' action="php_code.php" style=" margin-left: 402px;" >
+<?php elseif ($userst==true):?>
 
+  <form method="post" name='myform' action="php_code.php" style=" margin-left: 402px;" >
 
     <input type="hidden" name="ID" value="<?php echo $ID; ?>">
+
     <div class="input-group">
       <label>Username</label>
       <input type="text" name="Username" value="<?php echo $Username; ?> " readonly>
     </div>
+
     <div class="input-group">
-    
       <input type="hidden" name="Password" value="<?php echo $Password; ?>">
     </div>
 
     <div class="input-group">
-      
       <input type="hidden" name="Companyid" value="<?php echo $Companyid; ?>">
     </div>
 
-    <div class="input-group">
-      
+    <div class="input-group"> 
       <input type="hidden" name="Usertype" value="<?php echo $Usertype; ?>">
     </div>
 
-    <div class="input-group">
-      
+    <div class="input-group">  
       <input type="hidden" name="Usergroup"  value="<?php echo $Usergroup; ?>" >
     </div>
 
     <div class="input-group">
+      <label>User Status</label>
+      <input type="text" name="Userstatusdisplay" value="<?php 
 
-    <label>User Status</label>
-    <input type="text" name="Userstatusdisplay" value="<?php 
+      if($Userstatus==0){
+      echo "Never Logged in ";
+      }
+      elseif($Userstatus==1){
+      echo "Active";
+      }
+      elseif($Userstatus==2){
+      echo "Locked";
+      }
+      elseif($Userstatus==3){
+      echo "Blocked";
+      }
+      elseif($Userstatus==4){
+      echo "Deleted";
+      }
+      ?>" readonly>
+    </div>
 
-    if($Userstatus==0){
-    echo "Never Logged in ";
-    }
-    elseif($Userstatus==1){
-    echo "Active";
-    }
-    elseif($Userstatus==2){
-    echo "Locked";
-    }
-    elseif($Userstatus==3){
-    echo "Blocked";
-    }
-    elseif($Userstatus==4){
-    echo "Deleted";
-    }
-
-
-    ?>" readonly>
-</div>
 <br>
 
-
-  <div class="input-group">
-
-    <label>New User Status :    </label>
-    <br>
-
-  <select name="Userstatus" id="mySelect">
-  <option selected disabled value="012" > </option>
-  <option value="0">Never Logged in </option>
-  <option value="1">Active</option>
-  <option value="2">Locked</option>
-  <option value="3">Blocked</option>
-   <option value="4">Deleted</option>
-</select>
-</div>
+    <div class="input-group">
+      <label>New User Status :    </label>
+      <br>
+      <select name="Userstatus" id="mySelect">
+        <option selected disabled value="012" > </option>
+        <option value="0">Never Logged in </option>
+        <option value="1">Active</option>
+        <option value="2">Locked</option>
+        <option value="3">Blocked</option>
+        <option value="4">Deleted</option>
+      </select>
+    </div>
 
 
     <div class="input-group">
-    <button class="btn" type="submit" name="update" style="background: #556B2F;" >update</button>
-     
+      <button class="btn" type="submit" name="update" style="background: #556B2F;" >update</button>
     </div>
-
-
-
-    
-
-
 
     <?php endif ?>
 
-    </div>
+    <?php if (isset($_SESSION['message'])): ?>
+        <div class="msg">
+        <?php 
+          echo $_SESSION['message']; 
+          unset($_SESSION['message']);
+          ?>
+        </div>
 
+    <?php endif ?>
 
-
-
-<!-- 		
-			<?php if ($update == true): ?>
-				
-			<?php else: ?>
-				
-			<?php endif ?> -->
-
-
-      <?php if (isset($_SESSION['message'])): ?>
-  <div class="msg">
-    <?php 
-      echo $_SESSION['message']; 
-      unset($_SESSION['message']);
-    ?>
-      </div>
-  <?php endif ?>
 	</form>
-</div>
+
 </body>
 
 </html>
