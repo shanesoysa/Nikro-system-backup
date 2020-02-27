@@ -8,7 +8,6 @@
 <html>
 <head>
 	<title>List of users</title>
-	<!-- <link rel="stylesheet" type="text/css" href="style.css"> -->
 
   <meta charset="utf-8" />
   <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
@@ -24,8 +23,6 @@
   <link href="assets/css/paper-dashboard.css?v=2.0.0" rel="stylesheet" />
   <!-- CSS Just for demo purpose, don't include it in your project -->
   <link href="assets/demo/demo.css" rel="stylesheet" />
-
-
 
 </head>
 <body>
@@ -46,14 +43,15 @@
       </div>
       <div class="sidebar-wrapper">
         <ul class="nav">
-          <li class="active ">
+
+          <li>
             <a href="./dashboard.php">
               <i class="nc-icon nc-bank"></i>
               <p>Dashboard</p>
             </a>
           </li>
 
-          <li>
+          <li class="active ">
             <a href="./list.php">
               <i class="nc-icon nc-single-02"></i>
               <p>User Profile</p>
@@ -64,7 +62,6 @@
       </div>
     </div>
   </div>
-
 
 <div class="col-sm-9">
 <?php $results = mysqli_query($db, "SELECT * FROM user_details WHERE USER_STATUS!='4' "); ?>
@@ -79,7 +76,7 @@
 </div>
 <div class="overflow-auto">
 <div class="mt-l-2">
-<div class="table-responsive-sm" >
+<div class="table-responsive-sm-6" >
 <table class="table table-striped" style="font-size:11px;">
 	<thead>
 		<tr scope="row">
@@ -123,11 +120,10 @@
 </div>
 </div>
 
-
-
-
 </div>
-
+</div>
+</div>
+</div>
 
 </body>
 </html>

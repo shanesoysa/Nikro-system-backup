@@ -54,7 +54,7 @@
             </a>
           </li>
 
-          <li>
+          <li >
             <a href="./list.php">
               <i class="nc-icon nc-single-02"></i>
               <p>User Profile</p>

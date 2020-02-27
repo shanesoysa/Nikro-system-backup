@@ -63,7 +63,7 @@
 <html>
 <head>
 	<title> Nikro Management Services </title>
-	<link rel="stylesheet" type="text/css" href="style.css">
+	<!--  class="form-control" -->
 
 
 
@@ -82,6 +82,42 @@
   <!-- CSS Just for demo purpose, don't include it in your project -->
   <link href="assets/demo/demo.css" rel="stylesheet" />
 
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
+
+  <style type="text/css">
+
+/*body{
+    background-image: url("assets/img/img2.jpeg");
+    background-repeat: no-repeat, repeat;
+}*/
+
+  .usermanagement-form {
+        width: 500px;
+        margin: 50px auto;
+        
+  }
+    .usermanagement-form form {
+      margin-bottom: 15px;
+        background: #f7f7f7;
+        box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+        padding: 30px;
+        border-radius: 10px;
+    }
+    .form-control, .btn {
+        min-height: 38px;
+        border-radius: 2px;
+    }
+    .btn {        
+        font-size: 15px;
+        font-weight: bold;
+        border-radius: 12px;
+        width: 20%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+</style>
 
 
     <script type="text/JavaScript"> 
@@ -151,39 +187,40 @@
 <!-- Add new user ------------------------------------------------------------>
   <?php if($update==false):?>
 
-  <form method="post" name='myform' action="php_code.php" style=" margin-left: 402px;" >
+<div class="usermanagement-form">
+  <form method="post" name='myform' action="php_code.php" >
 
-		<div class="input-group">
+		<div class="form-group">
 			<label>Username</label>
-			<input type="text" name="Username" value="">
+			<input type="text" class="form-control" name="Username" value="">
 		</div>
 
-		<div class="input-group">
+		<div class="form-group">
 			<label>Password</label>
-			<input type="Password" name="Password" value="">
+			<input type="Password" class="form-control" name="Password" value="">
 		</div>
 
-    <div class="input-group">
+    <div class="form-group">
       <label>Companany ID</label>
-      <input type="Number" name="Companyid" value="">
+      <input type="Number" class="form-control" name="Companyid" value="">
     </div>
 
-    <div class="input-group">
+    <div class="form-group">
       <label>User Type</label>
-      <input type="Number" name="Usertype" value="">
+      <input type="Number" class="form-control" name="Usertype" value="">
     </div>
 
-    <div class="input-group">
+    <div class="form-group">
       <label>User Group</label>
-      <input type="Number" name="Usergroup" value="">
+      <input type="Number" class="form-control" name="Usergroup" value="">
     </div>
 
-    <div class="input-group">
-      <button class="btn" type="submit" name="save" >Save</button>
+    <div class="form-group">
+      <button class="btn btn-primary btn-block" type="submit" name="save" >Save</button>
     </div>
         
     <?php if (isset($_SESSION['message'])): ?>
-      <div class="msg">
+      <div class="alert alert-success text-center" role="alert">
         <?php 
           echo $_SESSION['message']; 
           unset($_SESSION['message']);
@@ -192,47 +229,48 @@
     <?php endif ?>
 
   </form>
+</div>>
   
 <!-- --------------------------------------------------------------------------------------------->
 <!-- Update user -->
 <?php elseif ($update==true && $resetpw==false && $userst==false):?>
+<div class="usermanagement-form">
+  <form method="post" name='myform' action="php_code.php">
 
-  <form method="post" name='myform' action="php_code.php" style=" margin-left: 402px;" >
+    <input type="hidden" class="form-control" name="ID" value="<?php echo $ID; ?>">
 
-    <input type="hidden" name="ID" value="<?php echo $ID; ?>">
-
-    <div class="input-group">
+    <div class="form-group">
       <label>Username</label>
-      <input type="text" name="Username" value="<?php echo $Username; ?>">
+      <input type="text" class="form-control" name="Username" value="<?php echo $Username; ?>">
     </div>
 
-    <div class="input-group">
+    <div class="form-group">
       <label>Password</label>
-      <input type="Password" name="Password" value="<?php echo $Password; ?>">
+      <input type="Password" class="form-control" name="Password" value="<?php echo $Password; ?>">
     </div>
 
-    <div class="input-group">
+    <div class="form-group">
       <label>Companany ID</label>
-      <input type="Number" name="Companyid" value="<?php echo $Companyid; ?>">
+      <input type="Number" class="form-control" name="Companyid" value="<?php echo $Companyid; ?>">
     </div>
 
-    <div class="input-group">
+    <div class="form-group">
       <label>User Type</label>
-      <input type="Number" name="Usertype" value="<?php echo $Usertype; ?>">
+      <input type="Number" class="form-control" name="Usertype" value="<?php echo $Usertype; ?>">
     </div>
 
-    <div class="input-group">
+    <div class="form-group">
       <label>User Group</label>
-      <input type="Number" name="Usergroup" value="<?php echo $Usergroup; ?>">
+      <input type="Number" class="form-control" name="Usergroup" value="<?php echo $Usergroup; ?>">
     </div>
 
-    <div class="input-group">
-      <button class="btn" type="submit" name="update">update</button>     
+    <div class="form-group">
+      <button class="btn btn-success btn-block" type="submit" name="update">update</button>     
     </div>
 
 
       <?php if (isset($_SESSION['message'])): ?>
-        <div class="msg">
+        <div class="alert alert-success text-center" role="alert">
           <?php 
             echo $_SESSION['message']; 
             unset($_SESSION['message']);
@@ -241,31 +279,32 @@
       <?php endif ?>
 
   </form>
+</div>
 
 <!-- --------------------------------------------------------------------------------------------->
 
 <?php elseif ($resetpw==true):?>
+<div class="usermanagement-form">
+  <form method="post" name='myform' action="php_code.php" onsubmit="return validateconfirmpassword()" >
 
-  <form method="post" name='myform' action="php_code.php" style=" margin-left: 402px;" onsubmit="return validateconfirmpassword()" >
+    <input type="hidden" class="form-control" name="ID" value="<?php echo $ID; ?>">
 
-    <input type="hidden" name="ID" value="<?php echo $ID; ?>">
-
-    <div class="input-group">
+    <div class="form-group">
       <label>Username</label>
-      <input type="text" name="Username" readonly value="<?php echo $Username; ?>">
+      <input type="text" class="form-control" name="Username" readonly value="<?php echo $Username; ?>">
     </div>
 
-    <div class="input-group">
+    <div class="form-group">
       <label>New Password</label>
-      <input type="Password" id="pw" name="Password" value="">
+      <input type="Password" class="form-control" id="pw" name="Password" value="">
     </div>
 
-    <div class="input-group">
-      <button class="btn" type="submit" name="update" onclick="return validateconfirmpassword()" style="background: #556B2F;" >update</button>
+    <div class="form-group">
+      <button class="btn btn-danger btn-block" type="submit" name="update" onclick="return validateconfirmpassword()">update</button>
     </div>
 
     <?php if (isset($_SESSION['message'])): ?>
-      <div class="msg">
+      <div class="alert alert-success text-center" role="alert">
         <?php 
         echo $_SESSION['message']; 
         unset($_SESSION['message']);
@@ -273,38 +312,38 @@
       </div>
     <?php endif ?>
   </form>
-
+</div>
 
 <?php elseif ($userst==true):?>
+<div class="usermanagement-form">
+  <form method="post" name='myform' action="php_code.php" >
 
-  <form method="post" name='myform' action="php_code.php" style=" margin-left: 402px;" >
+    <input type="hidden" class="form-control" name="ID" value="<?php echo $ID; ?>">
 
-    <input type="hidden" name="ID" value="<?php echo $ID; ?>">
-
-    <div class="input-group">
+    <div class="form-group">
       <label>Username</label>
-      <input type="text" name="Username" value="<?php echo $Username; ?> " readonly>
+      <input type="text" class="form-control" name="Username" value="<?php echo $Username; ?> " readonly>
     </div>
 
-    <div class="input-group">
-      <input type="hidden" name="Password" value="<?php echo $Password; ?>">
+    <div class="form-group">
+      <input type="hidden" class="form-control" name="Password" value="<?php echo $Password; ?>">
     </div>
 
-    <div class="input-group">
-      <input type="hidden" name="Companyid" value="<?php echo $Companyid; ?>">
+    <div class="form-group">
+      <input type="hidden" class="form-control" name="Companyid" value="<?php echo $Companyid; ?>">
     </div>
 
-    <div class="input-group"> 
-      <input type="hidden" name="Usertype" value="<?php echo $Usertype; ?>">
+    <div class="form-group"> 
+      <input type="hidden" class="form-control" name="Usertype" value="<?php echo $Usertype; ?>">
     </div>
 
-    <div class="input-group">  
-      <input type="hidden" name="Usergroup"  value="<?php echo $Usergroup; ?>" >
+    <div class="form-group">  
+      <input type="hidden" class="form-control" name="Usergroup"  value="<?php echo $Usergroup; ?>" >
     </div>
 
-    <div class="input-group">
+    <div class="form-group">
       <label>User Status</label>
-      <input type="text" name="Userstatusdisplay" value="<?php 
+      <input type="text" class="form-control" name="Userstatusdisplay" value="<?php 
 
       if($Userstatus==0){
       echo "Never Logged in ";
@@ -324,12 +363,9 @@
       ?>" readonly>
     </div>
 
-<br>
-
-    <div class="input-group">
-      <label>New User Status :    </label>
-      <br>
-      <select name="Userstatus" id="mySelect">
+    <div class="form-group">
+      <label>New User Status :</label>
+      <select class="form-control" name="Userstatus" id="mySelect">
         <option selected disabled value="012" > </option>
         <option value="0">Never Logged in </option>
         <option value="1">Active</option>
@@ -340,14 +376,14 @@
     </div>
 
 
-    <div class="input-group">
-      <button class="btn" type="submit" name="update" style="background: #556B2F;" >update</button>
+    <div class="form-group">
+      <button class="btn btn-primary btn-block" type="submit" name="update">update</button>
     </div>
 
     <?php endif ?>
 
     <?php if (isset($_SESSION['message'])): ?>
-        <div class="msg">
+        <div class="alert alert-success text-center" role="alert">
         <?php 
           echo $_SESSION['message']; 
           unset($_SESSION['message']);
@@ -357,6 +393,7 @@
     <?php endif ?>
 
 	</form>
+</div>
 
 </body>
 
