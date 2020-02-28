@@ -48,14 +48,14 @@
       <div class="sidebar-wrapper">
         <ul class="nav">
           <li class="active ">
-            <a href="./dashboard.php">
+            <a href="./dashboard.php" id="011501">
               <i class="nc-icon nc-bank"></i>
               <p>Dashboard</p>
             </a>
           </li>
 
           <li >
-            <a href="./list.php">
+            <a href="./list.php" id="011502">
               <i class="nc-icon nc-single-02"></i>
               <p>User Profile</p>
             </a>
@@ -77,7 +77,7 @@
 
                      <form method='post' action="php_code.php">
             
-                    <button name="logout" class="btn btn-info">Logout</button>
+                    <button name="logout" class="btn btn-info" id="011301">Logout</button>
                     </form>
 
               <button type="button" class="navbar-toggler">
@@ -97,13 +97,12 @@
           </div>
                     <?php if (isset($_SESSION['name'])): ?>
                     <div class="msg8" style=" margin-right: -100px; margin-top: 20px;">
-                    <h2><a href="oneusermanagement.php?useredit=<?php echo $_SESSION['loginid']; ?>">
+                    <h2><a href="oneusermanagement.php?useredit=<?php echo $_SESSION['loginid']; ?>" id = "011501">
                     <?php
                     if($_SESSION['name']==''){
                       header('location:oneusermanagement.php');
                     }
                     else{
-
                     echo $_SESSION['name']; 
                     }
                     ?>
@@ -131,7 +130,7 @@
               </li>
               <form method='post' action="php_code.php">
             
-                    <button name="logout" class="btn btn-info">Logout</button>
+                    <button name="logout" class="btn btn-info" id="011301">Logout</button>
                     </form>
     
        
