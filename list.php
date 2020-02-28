@@ -76,7 +76,7 @@
 </div>
 <div class="overflow-auto">
 <div class="mt-l-2">
-<div class="table-responsive-sm-6" >
+<div class="table-responsive-sm-6" style="margin-left: -50px;">
 <table class="table table-striped" style="font-size:11px;">
 	<thead>
 		<tr scope="row">
