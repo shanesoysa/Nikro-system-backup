@@ -71,7 +71,7 @@
 <div class="container">
   <h1>User Profile</h1>
 <div class="float-right">
-<a href="usermanagement.php" class="btn btn-primary">Add New User</a>
+<a href="usermanagement.php" class="btn btn-primary" id="021501">Add New User</a>
 <br>
 </div>
 <div class="overflow-auto">
@@ -97,18 +97,18 @@
       <td><?php echo $row['USER_LASTLOGIN_DATETIME']; ?></td>
       <td><?php echo $row['USER_LASTOPERATION_DATETIME']; ?></td>
 			<td>
-				<a href="usermanagement.php?edit=<?php echo $row['RECORD_ID']; ?>" class="btn btn-outline-success btn-sm" >User Details</a>
+				<a href="usermanagement.php?edit=<?php echo $row['RECORD_ID']; ?>" class="btn btn-outline-success btn-sm" id="021502" >User Details</a>
 			</td>
       <td>
         
-        <a id="reset_password" href="usermanagement.php?resetpw=<?php echo $row['RECORD_ID']; ?>" class="btn btn-outline-success btn-sm" >Reset password</a>
+        <a id="reset_password" href="usermanagement.php?resetpw=<?php echo $row['RECORD_ID']; ?>" class="btn btn-outline-success btn-sm" id="021503" >Reset password</a>
         
       </td>
       <td>
-        <a href="usermanagement.php?userst=<?php echo $row['RECORD_ID']; ?>" class="btn btn-outline-success btn-sm" >User Status </a>
+        <a href="usermanagement.php?userst=<?php echo $row['RECORD_ID']; ?>" class="btn btn-outline-success btn-sm" id="021504" >User Status </a>
       </td>
 			<td>
-				<a href="php_code.php?del=<?php echo $row['RECORD_ID']; ?>" class="btn btn-danger btn-sm">Delete</a>
+				<a href="php_code.php?del=<?php echo $row['RECORD_ID']; ?>" class="btn btn-danger btn-sm" id="021505">Delete</a>
 			</td>
 		</tr>
 	<?php } ?>

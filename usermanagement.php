@@ -191,32 +191,32 @@
   <form method="post" name='myform' action="php_code.php" >
 
 		<div class="form-group">
-			<label>Username</label>
-			<input type="text" class="form-control" name="Username" value="">
+			<label id="021401">Username</label>
+			<input type="text" id="021001" class="form-control" name="Username" value="">
 		</div>
 
 		<div class="form-group">
-			<label>Password</label>
-			<input type="Password" class="form-control" name="Password" value="">
+			<label id="021402">Password</label>
+			<input type="Password" id="021002" class="form-control" name="Password" value="">
 		</div>
 
     <div class="form-group">
-      <label>Companany ID</label>
-      <input type="Number" class="form-control" name="Companyid" value="">
+      <label id="021403">Companany ID</label>
+      <input type="Number" id="021003" class="form-control" name="Companyid" value="">
     </div>
 
     <div class="form-group">
-      <label>User Type</label>
-      <input type="Number" class="form-control" name="Usertype" value="">
+      <label id="021404">User Type</label>
+      <input type="Number" id="021004" class="form-control" name="Usertype" value="">
     </div>
 
     <div class="form-group">
-      <label>User Group</label>
-      <input type="Number" class="form-control" name="Usergroup" value="">
+      <label id="021405">User Group</label>
+      <input type="Number" id="021005" class="form-control" name="Usergroup" value="">
     </div>
 
     <div class="form-group">
-      <button class="btn btn-primary btn-block" type="submit" name="save" >Save</button>
+      <button class="btn btn-primary btn-block" id="021301" type="submit" name="save" >Save</button>
     </div>
         
     <?php if (isset($_SESSION['message'])): ?>
@@ -240,32 +240,32 @@
     <input type="hidden" class="form-control" name="ID" value="<?php echo $ID; ?>">
 
     <div class="form-group">
-      <label>Username</label>
-      <input type="text" class="form-control" name="Username" value="<?php echo $Username; ?>">
+      <label id="021401" >Username</label>
+      <input type="text" class="form-control" id="021001" name="Username" value="<?php echo $Username; ?>">
     </div>
 
     <div class="form-group">
-      <label>Password</label>
-      <input type="Password" class="form-control" name="Password" value="<?php echo $Password; ?>">
+      <label id="021402" >Password</label>
+      <input type="Password" class="form-control" id="021002" name="Password" value="<?php echo $Password; ?>">
     </div>
 
     <div class="form-group">
-      <label>Companany ID</label>
-      <input type="Number" class="form-control" name="Companyid" value="<?php echo $Companyid; ?>">
+      <label id="021403" >Companany ID</label>
+      <input type="Number" class="form-control" id="021003" name="Companyid" value="<?php echo $Companyid; ?>">
     </div>
 
     <div class="form-group">
-      <label>User Type</label>
-      <input type="Number" class="form-control" name="Usertype" value="<?php echo $Usertype; ?>">
+      <label id="021404" >User Type</label>
+      <input type="Number" class="form-control" id="021004" name="Usertype" value="<?php echo $Usertype; ?>">
     </div>
 
     <div class="form-group">
-      <label>User Group</label>
-      <input type="Number" class="form-control" name="Usergroup" value="<?php echo $Usergroup; ?>">
+      <label id="021405" >User Group</label>
+      <input type="Number" class="form-control" id="021005" name="Usergroup" value="<?php echo $Usergroup; ?>">
     </div>
 
     <div class="form-group">
-      <button class="btn btn-success btn-block" type="submit" name="update">update</button>     
+      <button class="btn btn-success btn-block" id="021301" type="submit" name="update">update</button>     
     </div>
 
 
@@ -290,17 +290,17 @@
     <input type="hidden" class="form-control" name="ID" value="<?php echo $ID; ?>">
 
     <div class="form-group">
-      <label>Username</label>
-      <input type="text" class="form-control" name="Username" readonly value="<?php echo $Username; ?>">
+      <label id="021401">Username</label>
+      <input type="text" id="021001" class="form-control" name="Username" readonly value="<?php echo $Username; ?>">
     </div>
 
     <div class="form-group">
-      <label>New Password</label>
-      <input type="Password" class="form-control" id="pw" name="Password" value="">
+      <label id="021402">New Password</label>
+      <input type="Password" id="021002" class="form-control" id="pw" name="Password" value="">
     </div>
 
     <div class="form-group">
-      <button class="btn btn-danger btn-block" type="submit" name="update" onclick="return validateconfirmpassword()">update</button>
+      <button class="btn btn-danger btn-block" id="021301" type="submit" name="update" onclick="return validateconfirmpassword()">update</button>
     </div>
 
     <?php if (isset($_SESSION['message'])): ?>
@@ -321,8 +321,8 @@
     <input type="hidden" class="form-control" name="ID" value="<?php echo $ID; ?>">
 
     <div class="form-group">
-      <label>Username</label>
-      <input type="text" class="form-control" name="Username" value="<?php echo $Username; ?> " readonly>
+      <label id="021401">Username</label>
+      <input type="text" id="021001" class="form-control" name="Username" value="<?php echo $Username; ?> " readonly>
     </div>
 
     <div class="form-group">
@@ -342,8 +342,8 @@
     </div>
 
     <div class="form-group">
-      <label>User Status</label>
-      <input type="text" class="form-control" name="Userstatusdisplay" value="<?php 
+      <label id="021402">User Status</label>
+      <input type="text" id="021002" class="form-control" name="Userstatusdisplay" value="<?php 
 
       if($Userstatus==0){
       echo "Never Logged in ";
@@ -364,8 +364,8 @@
     </div>
 
     <div class="form-group">
-      <label>New User Status :</label>
-      <select class="form-control" name="Userstatus" id="mySelect">
+      <label id="021403">New User Status :</label>
+      <select class="form-control" name="Userstatus" id="121601" id="mySelect">
         <option selected disabled value="012" > </option>
         <option value="0">Never Logged in </option>
         <option value="1">Active</option>
@@ -377,7 +377,7 @@
 
 
     <div class="form-group">
-      <button class="btn btn-primary btn-block" type="submit" name="update">update</button>
+      <button class="btn btn-primary btn-block" id="021301" type="submit" name="update">update</button>
     </div>
 
     <?php endif ?>
