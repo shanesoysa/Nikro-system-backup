@@ -68,17 +68,17 @@ function validateForm() {
 <div class="login-form">
     <form action="php_code.php"  method="post" name="loginform" onsubmit="return validateForm()">
         <div class="text-center">
-        <img src="assets/img/nikro.png" id="001201" style="height: 130px; width: 230px;">
+        <img src="assets/img/nikro.png" id="N001201" style="height: 130px; width: 230px;">
         <br></br>       
         </div>
         <div class="form-group">
-            <input type="text" class="form-control" id="001001" placeholder="Username" name="us" required="required">
+            <input type="text" class="form-control" id="N001001" placeholder="Username" name="us" required="required">
         </div>
         <div class="form-group">
-            <input type="password" class="form-control" id="001101" placeholder="Password" name="pass" required="required">
+            <input type="password" class="form-control" id="N001101" placeholder="Password" name="pass" required="required">
         </div>
         <div class="form-group">
-            <button type="submit" class="btn btn-success btn-block" id="001301" name="login_user">Log in</button>
+            <button type="submit" class="btn btn-success btn-block" id="N001301" name="login_user">Log in</button>
         </div>
 
     <?php if (isset($_SESSION['message'])): ?>

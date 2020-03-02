@@ -95,13 +95,13 @@
   <div class="sidebar-wrapper">
         <ul class="nav">
           <li class="active ">
-            <a href="./dashboard.php" id="011501">
+            <a href="./dashboard.php" id="N011501">
               <i class="nc-icon nc-bank"></i>
               <p>Dashboard</p>
             </a>
           </li>
           <li>
-            <a href="./list.php" id="011502">
+            <a href="./list.php" id="N011502">
               <i class="nc-icon nc-single-02"></i>
               <p>User Profile</p>
             </a>
@@ -117,57 +117,57 @@
 
       <input type="hidden"  class="form-control" name="ID" value="<?php echo $ID; ?>">
       <div class="form-group">
-        <label id="011401">User Display Name :</label>
-        <input type="text" id="011001" name="displayname" class="form-control" value="<?php echo $Userdisplayname; ?>">
+        <label id="N011401">User Display Name :</label>
+        <input type="text" id="N011001" name="displayname" class="form-control" value="<?php echo $Userdisplayname; ?>">
       </div>
 
       <div class="form-group">
-        <label id="011402">Company ID :</label>
-        <input type="text" id="011002" class="form-control" name="companyidone" value="<?php echo $Companyid; ?>" readonly>
+        <label id="N011402">Company ID :</label>
+        <input type="text" id="N011002" class="form-control" name="companyidone" value="<?php echo $Companyid; ?>" readonly>
       </div>
 
       <div class="form-group">
-       <label id="011403">Telephone 1 :</label>
-      <input type="text" id="011003" class="form-control" name="telephone1" value="<?php echo $telephone1; ?>">
+       <label id="N011403">Telephone 1 :</label>
+      <input type="text" id="N011003" class="form-control" name="telephone1" value="<?php echo $telephone1; ?>">
       </div>
 
       <div class="form-group">
-        <label id="011404">Telephone 2 :</label>
-        <input type="text" id="011004" class="form-control" name="telephone2" value="<?php echo $telephone2; ?>">
+        <label id="N011404">Telephone 2 :</label>
+        <input type="text" id="N011004" class="form-control" name="telephone2" value="<?php echo $telephone2; ?>">
       </div>
 
       <div class="form-group">
-        <label id="011405">Address 1 :</label>
-        <input type="text" id="011005" class="form-control" name="address1" value="<?php echo $address1; ?>">
+        <label id="N011405">Address 1 :</label>
+        <input type="text" id="N011005" class="form-control" name="address1" value="<?php echo $address1; ?>">
       </div>
      
       <div class="form-group">
-        <label id="011406">Address 2 :</label>
-      <input type="text" id="011006" class="form-control" name="address2" value="<?php echo $address2; ?>">
+        <label id="N011406">Address 2 :</label>
+      <input type="text" id="N011006" class="form-control" name="address2" value="<?php echo $address2; ?>">
       </div>
 
       <div class="form-group">
-        <label id="011407">Address 3 :</label>
-      <input type="text" id="011007" class="form-control" name="address3" value="<?php echo $address3; ?>">
+        <label id="N011407">Address 3 :</label>
+      <input type="text" id="N011007" class="form-control" name="address3" value="<?php echo $address3; ?>">
       </div>
       
       <div class="form-group">
-         <label id="011408">Address 4 :</label>
-      <input type="text" id="011008" class="form-control" name="address4" value="<?php echo $address4; ?>">
+         <label id="N011408">Address 4 :</label>
+      <input type="text" id="N011008" class="form-control" name="address4" value="<?php echo $address4; ?>">
       </div>
 
       <div class="form-group">
-          <label id="011409">Birth Day :</label>
-      <input type="date" id="011009" class="form-control" name="birthday" value="<?php echo $birthday; ?>">
+          <label id="N011409">Birth Day :</label>
+      <input type="date" id="N011009" class="form-control" name="birthday" value="<?php echo $birthday; ?>">
       </div>
     
       <div class="form-group">
-        <label id="011410"> E-mail :</label>
-      <input type="text" id="011010" class="form-control" name="email" value="<?php echo $email; ?>">
+        <label id="N011410"> E-mail :</label>
+      <input type="text" id="N011010" class="form-control" name="email" value="<?php echo $email; ?>">
       </div>
 
       <div class="form-group">
-      <button class="btn btn-success btn-block" id="011301" type="submit" name="updateoneuser" >update profile </button>
+      <button class="btn btn-success btn-block" id="N011301" type="submit" name="updateoneuser" >update profile </button>
 
       <?php if (isset($_SESSION['messageone'])): ?>
       <div class="alert alert-success text-center" role="alert">

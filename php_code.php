@@ -34,7 +34,9 @@
 			$last_id = $db->insert_id;
 			$insert_into_user_p = mysqli_query($db, "INSERT INTO user_p_details (RECORD_ID,USER_COMPANY_ID) VALUES ('$last_id','$Companyid')");
 
-			if($insert_into_user_p){
+			$inset_into_temp=mysqli_query($db, "INSERT INTO temp (Record_ID) VALUES ('$last_id')");
+
+			if($insert_into_user_p && $inset_into_temp ){
 			$_SESSION['message'] = "User created successfully !"; 
 			header('location: usermanagement.php');
 		}

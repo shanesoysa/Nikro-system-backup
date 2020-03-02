@@ -6,21 +6,21 @@ $USER_ID = $_SESSION['loginid'];
 
 
 
-$select_sqlk = mysqli_query($db,"select USER_GROUP from user_details where RECORD_ID ='$USER_ID';");
+$select_temp = mysqli_query($db,"select temp1 from temp where Record_ID ='$USER_ID';");
 
 
 
-if(isset($select_sqlk)==1){
-	$n = mysqli_fetch_array($select_sqlk);
-	$USERGROUP = $n['USER_GROUP'];
+if(isset($select_temp)==1){
+	$n = mysqli_fetch_array($select_temp);
+	$temp_value = $n['temp1'];
 }
 
 
-switch ($USERGROUP) {
-    case 4:
+switch ($temp_value) {
+    case 12:
         echo 
         '<style type="text/css">
-        #reset_password{
+        #N021504,#N021505,#N021502,#N021503{
 		display:none;
 		}
 
@@ -28,7 +28,7 @@ switch ($USERGROUP) {
         break;
 
     default:
-        echo "r".$USERGROUP."asdasdas";
+        echo "rssssssssssssssssssssssssssssssssssssssssssssssssssssssssss".$temp_value."asdasdas";
 }
 
 
