@@ -68,9 +68,8 @@
 	$update_one_user=mysqli_query($db, "UPDATE user_details SET USER_LOGIN_NAME='$Username', USER_PASSWORD='$Password', USER_COMPANY_ID='$Companyid', USER_TYPE='$Usertype', USER_GROUP=' $Usergroup', USER_STATUS= ' $Userstatus' WHERE RECORD_ID='$id' ");
 
 	if($update_one_user){
-	
-	$_SESSION['message'] = "Updated!"; 
-	header('location: usermanagement.php');
+		$_SESSION['message'] = "Updated!";
+	 	header('location: list.php');
 	}
 	else{
 	$_SESSION['message'] = "update failed!"; 
