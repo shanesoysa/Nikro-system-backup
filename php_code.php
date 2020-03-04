@@ -38,7 +38,7 @@
 
 			if($insert_into_user_p && $inset_into_temp ){
 			$_SESSION['message'] = "User created successfully !"; 
-			header('location: usermanagement.php');
+			header('location: list.php');
 		}
 
 
