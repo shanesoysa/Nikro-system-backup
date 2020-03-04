@@ -2,7 +2,6 @@
 <?php include('logcheck.php');?>
 <?php include('access.php');?>
 
-
 <!-- Check git how -->
 <!DOCTYPE html>
 <html>
@@ -26,6 +25,14 @@
 
 </head>
 <body>
+
+  <?php if (isset($_SESSION['message'])): ?>
+          <?php 
+          echo "<script type='text/javascript'>alert('Details Updated');</script>";
+          ?>
+  <?php endif ?>
+
+
   <div class="row">
   <div class="col-sm-3">
 

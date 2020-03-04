@@ -154,9 +154,7 @@
         </a>
         <a href="http://www.creative-tim.com" class="simple-text logo-normal">
          NMS
-          <!-- <div class="logo-image-big">
-            <img src="../assets/img/logo-big.png">
-          </div> -->
+          
         </a>
       </div>
 
