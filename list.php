@@ -23,14 +23,55 @@
   <!-- CSS Just for demo purpose, don't include it in your project -->
   <link href="assets/demo/demo.css" rel="stylesheet" />
 
+  <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"> -->
+
+  <style type="text/css">
+    .alert {
+      padding: 20px;
+      background-color: #A4FFBF;
+      color: black;
+      width: 40%;
+      margin-left: auto;
+      margin-right: auto;
+      }
+
+    .closebtn {
+      margin-left: 15px;
+      color: white;
+      font-weight: bold;
+      float: right;
+      font-size: 22px;
+      line-height: 20px;
+      cursor: pointer;
+      transition: 0.3s;
+      }
+
+    .closebtn:hover {
+      color: black;
+      }  
+  </style>
+
 </head>
 <body>
 
+<script type="text/javascript">
+  <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> <strong>'
+</script>
+
   <?php if (isset($_SESSION['message'])): ?>
+          <?php 
+          echo ' <div class="alert">';
+          echo $_SESSION['message'];
+          unset($_SESSION['message']);
+          echo '</strong></div>';
+          ?>
+  <?php endif ?>
+
+ <!--  <?php if (isset($_SESSION['message'])): ?>
           <?php 
           echo "<script type='text/javascript'>alert('Details Updated');</script>";
           ?>
-  <?php endif ?>
+  <?php endif ?> -->
 
 
   <div class="row">
