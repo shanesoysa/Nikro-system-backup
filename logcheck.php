@@ -12,6 +12,7 @@
    $login_session = $row['USER_LOGIN_NAME'];
    
    if(!isset($_SESSION['login_user'])){
+   	unset($_SESSION['message']);
       header("location:index.php");
       die();
    }

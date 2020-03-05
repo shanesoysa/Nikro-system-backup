@@ -17,7 +17,7 @@ if(isset($select_temp)==1){
 
 
 switch ($temp_value) {
-    case 12:
+    case 13:
         echo 
         '<style type="text/css">
         #N021504,#N021505,#N021502,#N021503{

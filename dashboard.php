@@ -96,21 +96,23 @@
            <!--  <a class="navbar-brand" href="#pablo"> Logout</a> -->
           </div>
                     <?php if (isset($_SESSION['name'])): ?>
-                    <div class="msg8" style=" margin-right: -100px; margin-top: 20px;">
-                    <h2><a href="oneusermanagement.php?useredit=<?php echo $_SESSION['loginid']; ?>" id = "N011501">
-                    <?php
-                    if($_SESSION['name']==''){
-                      header('location:oneusermanagement.php');
-                    }
-                    else{
-                    echo $_SESSION['name']; 
-                    }
-                    ?>
-                    <?php endif?>
-                    </a>
+                    <div class="container-fluid" style=" margin-right: -100px; margin-top: 20px;">
+                    <h2>   
+                      <a href="oneusermanagement.php?useredit=<?php echo $_SESSION['loginid']; ?>" id="N011501">
+                      <?php
+                        if($_SESSION['name']==''){
+                          header('location:oneusermanagement.php');
+                        }
+                        else{
+                          echo $_SESSION['name']; 
+                        }
+                      ?>
+                      <?php endif?>
+                    
+                      </a>
                     </h2>
                     </div>
-                    <br>
+                        <br>
 
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-bar navbar-kebab"></span>
