@@ -193,6 +193,11 @@
 			<input type="text" id="N021001" class="form-control" name="Username" value="">
 		</div>
 
+    <div class="form-group">
+			<label id="N021406">User Display Name</label>
+			<input type="text" id="N021006" class="form-control" name="User_Display_name" value="">
+		</div>
+
 		<div class="form-group">
 			<label id="N021402">Password</label>
 			<input type="Password" id="N021002" class="form-control" name="Password" value="">

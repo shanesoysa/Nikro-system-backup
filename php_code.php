@@ -43,6 +43,7 @@
 		$Companyid = $_POST['Companyid'];
 		$Usertype = $_POST['Usertype'];
 		$Usergroup = $_POST['Usergroup'];
+		$UserDisplayName=$_POST['User_Display_name'];
 
 		$insert_query = mysqli_query($db, "INSERT INTO user_details (USER_LOGIN_NAME, USER_PASSWORD, USER_COMPANY_ID, USER_TYPE,USER_GROUP) VALUES ('$Username', '$Password', '$Companyid', '$Usertype', '$Usergroup')"); 
 
@@ -51,11 +52,13 @@
 		if($insert_query)
 		{
 			$last_id = $db->insert_id;
-			$insert_into_user_p = mysqli_query($db, "INSERT INTO user_p_details (RECORD_ID,USER_COMPANY_ID) VALUES ('$last_id','$Companyid')");
+			$insert_into_user_p = mysqli_query($db, "INSERT INTO user_p_details (RECORD_ID,USER_COMPANY_ID,USER_DISPLAY_NAME) VALUES ('$last_id','$Companyid','$UserDisplayName')");
 
 			$inset_into_temp=mysqli_query($db, "INSERT INTO temp (Record_ID) VALUES ('$last_id')");
 
+
 			if($insert_into_user_p && $inset_into_temp ){
+
 			$_SESSION['message'] = "User created successfully !"; 
 			header('location: list.php');
 		}

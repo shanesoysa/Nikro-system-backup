@@ -93,21 +93,27 @@
                 </span>
               </button>
             </div>
-           <!--  <a class="navbar-brand" href="#pablo"> Logout</a> -->
+           
           </div>
                     <?php if (isset($_SESSION['name'])): ?>
                     <div class="container-fluid" style=" margin-right: -100px; margin-top: 20px;">
                     <h2>   
                       <a href="oneusermanagement.php?useredit=<?php echo $_SESSION['loginid']; ?>" id="N011501">
                       <?php
-                        if($_SESSION['name']==''){
-                          header('location:oneusermanagement.php');
-                        }
-                        else{
-                          echo $_SESSION['name']; 
-                        }
-                      ?>
-                      <?php endif?>
+                          $UserIDForName=$_SESSION['loginid'];
+                        	$userDisplayNameQuery = mysqli_query($db, "SELECT USER_DISPLAY_NAME FROM user_p_details WHERE RECORD_ID='$UserIDForName'");          
+                          
+                          if(isset($userDisplayNameQuery)==1){
+                            $n = mysqli_fetch_array($userDisplayNameQuery);
+                            $userDisplayName = $n['USER_DISPLAY_NAME'];
+                          }
+
+                          echo $userDisplayName;
+
+                          endif
+                          
+                        ?>
+                       
                     
                       </a>
                     </h2>
@@ -124,7 +130,7 @@
             <ul class="navbar-nav">
               <li class="nav-item">
                 <a class="nav-link btn-magnify" href="#pablo">
-                <!--   <i class="nc-icon nc-layout-11"></i> -->
+               
                   <p>
                     <span class="d-lg-none d-md-block">Stats</span>
                   </p>
