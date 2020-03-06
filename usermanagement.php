@@ -122,16 +122,46 @@
 
     <script type="text/JavaScript"> 
 
-      function validateconfirmpassword() {
-        var x = document.getElementById("pw").value;
-        var y = document.getElementById("conpw").value;
-        if (x != y) {
-          alert("Password did not match!");
-          return false;
+      // function validateconfirmpassword() {
+      //   var x = document.getElementById("pw").value;
+      //   var y = document.getElementById("conpw").value;
+      //   if (x != y) {
+      //     alert("Password did not match!");
+      //     return false;
+
+      // }
+      // return true;
+      function validatePassword(){
+        var password = document.getElementById("N021002np"), 
+            confirm_password = document.getElementById("N021003cp");
+        if(password.value != confirm_password.value) {
+          confirm_password.setCustomValidity("Passwords Don't Match");
+          } else {
+          confirm_password.setCustomValidity('');
+          }
+      }
+
+      password.onchange = validatePassword;
+      confirm_password.onkeyup = validatePassword;
+
+      function myFunction() {
+        var x = document.getElementById("N021002np");
+        if (x.type === "password") {
+          x.type = "text";
+        } else {
+          x.type = "password";
+        }
+
+        var y = document.getElementById("N021003cp");
+        if (y.type === "password") {
+          y.type = "text";
+        } else {
+          y.type = "password";
+        }
 
       }
-      return true;
 
+      
     </script>
 
 
@@ -191,6 +221,11 @@
 		<div class="form-group">
 			<label id="N021401">Username</label>
 			<input type="text" id="N021001" class="form-control" name="Username" value="">
+		</div>
+
+    <div class="form-group">
+			<label id="N021406">User Display Name</label>
+			<input type="text" id="N021006" class="form-control" name="User_Display_name" value="">
 		</div>
 
 		<div class="form-group">
@@ -283,7 +318,7 @@
 
 <?php elseif ($resetpw==true):?>
 <div class="usermanagement-form">
-  <form method="post" name='myform' action="php_code.php" onsubmit="return validateconfirmpassword()" >
+  <form method="post" name='myform' action="php_code.php" >
 
     <input type="hidden" class="form-control" name="ID" value="<?php echo $ID; ?>">
 
@@ -294,11 +329,21 @@
 
     <div class="form-group">
       <label id="N021402">New Password</label>
-      <input type="Password" id="N021002" class="form-control" id="pw" name="Password" value="">
+      <div class="input-group" id="show_hide_password">
+        <input type="Password" id="N021002np" class="form-control" name="Password" value="">
+          <div class="input-group-addon">
+            <input type="checkbox" name="sp" onclick="myFunction()">show
+          </div>
+      </div>
     </div>
 
     <div class="form-group">
-      <button class="btn btn-danger btn-block" id="N021301" type="submit" name="update" onclick="return validateconfirmpassword()">update</button>
+      <label id="N021402">Confirm Password</label>
+      <input type="Password" id="N021003cp" class="form-control" name="Password" value="">
+    </div>
+    
+    <div class="form-group">
+      <button class="btn btn-danger btn-block" id="N021301" type="submit" name="update" onclick="return validatePassword()">update</button>
     </div>
 
     <?php if (isset($_SESSION['message'])): ?>
