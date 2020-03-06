@@ -116,12 +116,12 @@
 	$birthday=$_POST['birthday'];
 	$email=$_POST['email'];
 
-	$update_one_user=mysqli_query($db, "UPDATE user_p_details SET USER_DISPLAY_NAME='$dispalayname', USER_TELEPHONE1='$telephone1', USER_TELEPHONE2='$telephone2', USER_ADDRESS_1='$address1', USER_ADDRESS_2=' $address2', USER_ADDRESS_3=' $address3' , USER_ADDRESS_4='$address4', USER_BIRTHDAY='$birthday', USER_EMAIL='$email' WHERE RECORD_ID='$id'");
+	$update_one_user=mysqli_query($db, "UPDATE user_p_details SET USER_DISPLAY_NAME='$dispalayname', USER_TELEPHONE1='$telephone1', USER_TELEPHONE2='$telephone2', USER_ADDRESS_1='$address1', USER_ADDRESS_2='$address2', USER_ADDRESS_3='$address3' , USER_ADDRESS_4='$address4', USER_BIRTHDAY='$birthday', USER_EMAIL='$email' WHERE RECORD_ID='$id'");
 
 	if($update_one_user){
 	
 	$_SESSION['messageone'] = "Updated!"; 
-	header('location: index.php');
+	header('location: dashboard.php');
 	}
 	else{
 	$_SESSION['messageone'] = "update failed!"; 
