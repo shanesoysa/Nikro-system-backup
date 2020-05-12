@@ -74,8 +74,11 @@
 <?php $results = mysqli_query($db, "SELECT * FROM user_details WHERE USER_STATUS!='4' "); ?>
 
 <div class="container">
-   <input id="myInput" type="text" placeholder="Search..">
-
+  <h1>Personal Information</h1>
+      <div class="text-right">
+      <a href="personalCollection.php" class="btn btn-primary" id="">Add New Worker</a>
+      <br>
+      </div>
 <div class="overflow-auto">
 <div class="mt-l-2">
 <div class="table-responsive-sm-6">
@@ -83,28 +86,29 @@
       	<thead>
       		<tr scope="row">
       			<th scope="col" width="0">Username</th>
-            <th scope="col" width="0">User Created Time</th>
-            <th scope="col" width="0">User Status</th>
-            <th scope="col" width="0">User Last Login</th>
-            <th scope="col" width="0">User Last Operation</th>  			
+            <th scope="col" width="0">Address</th>
+            <th scope="col" width="0">Email</th>
+            <th scope="col" width="0">Mobile</th>
+            <th scope="col" width="0">NIC</th>  			
       			<th  scope="col" width="0">Action</th>
       		</tr>
       	</thead>
-      	<tbody  id="myTable">
-      	<?php while ($row = mysqli_fetch_array($results)) { ?>
       		<tr scope="row">
-      			<td><?php echo $row['USER_LOGIN_NAME']; ?></td>
-            <td><?php echo $row['USER_CREATED_TIME']; ?></td>
-            <td class="text-center"><?php echo $row['USER_STATUS']; ?></td>
-            <td><?php echo $row['USER_LASTLOGIN_DATETIME']; ?></td>
-            <td><?php echo $row['USER_LASTOPERATION_DATETIME']; ?></td>
+      			<td>New User</td>
+            <td>Katunayake</td>
+            <td>newuser@gmail.com</td>
+            <td>0777678678</td>
+            <td>992345783V</td>
       			<td>
-      				<a href="usermanagement.php?edit=<?php echo $row['RECORD_ID']; ?>" class="btn btn-success btn-sm" id="N021502" >User Details</a>
+      				<a  class="btn btn-success btn-sm" id="N021502" >User Full Info</a>
       			</td>
-
+            <td>
+              
+              <a  class="btn btn-success btn-sm" id="N021503" >Remove</a>
+              
+            </td>
       		</tr>
-      	<?php } ?>
-        </tbody>	 
+      	 
       </table>
 </div>
 </div>
@@ -113,16 +117,6 @@
 </div>
 </div>
 </div>
-  <script>
-$(document).ready(function(){
-  $("#myInput").on("keyup", function() {
-    var value = $(this).val().toLowerCase();
-    $("#myTable tr").filter(function() {
-      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-    });
-  });
-});
-</script>
 
 </body>
 </html>

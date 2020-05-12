@@ -3,33 +3,50 @@
 $db = mysqli_connect('localhost', 'root', '', 'user_db');
 
 $USER_ID = $_SESSION['loginid'];
+$ALL_ID = array("N021502", "N021503", "N021504","N021505");
 
-
-
-$select_temp = mysqli_query($db,"select temp1 from temp where Record_ID ='$USER_ID';");
-
-
-
-if(isset($select_temp)==1){
-	$n = mysqli_fetch_array($select_temp);
-	$temp_value = $n['temp1'];
+echo 
+'<style type="text/css">
+#N021502,#N021503,#N021504,#N021505{
+display:none;
 }
 
+</style>';
 
-switch ($temp_value) {
-    case 13:
+
+$select_target_id = mysqli_query($db,"select TARGET_ID from user_loging_entity where ENTITI_RECORD_ID ='$USER_ID';");
+
+
+$user_authentic_id=array();
+while($row = mysqli_fetch_array($select_target_id)) {
+    foreach($row as $value){
+
+      $user_authentic_id[$value]=$row['TARGET_ID'];
+
+    }
+
+}
+
+$array_matching_elemets=array_intersect($ALL_ID ,$user_authentic_id);
+
+if(count($array_matching_elemets)>0){
+
+    foreach($array_matching_elemets as $key => $value)
+    {
         echo 
-        '<style type="text/css">
-        #N021504,#N021505,#N021502,#N021503{
-		display:none;
-		}
+    '<style type="text/css">
+    #'.$value.'{
+    display:inline;
+    }
 
-		</style>';
-        break;
+    </style>';
 
-    default:
-        echo "rssssssssssssssssssssssssssssssssssssssssssssssssssssssssss".$temp_value."asdasdas";
+  
+    }
+
 }
+
+
 
 
 

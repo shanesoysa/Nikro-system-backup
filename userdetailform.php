@@ -3,11 +3,10 @@
 <!DOCTYPE html>
 
 <?php 
-  if (isset($_GET['useredit'])){
-    $ID = $_GET['useredit'];
+  if (isset($_GET['userupdateadmin'])){
+    $ID = $_GET['userupdateadmin'];
     
     $rec99 = mysqli_query($db, "SELECT * FROM user_p_details WHERE RECORD_ID=$ID");
-    $queary1 = mysqli_query($db, "SELECT * FROM user_details WHERE RECORD_ID=$ID");
 
     if (isset($rec99) == 1) {
       $n = mysqli_fetch_array($rec99);
@@ -21,23 +20,7 @@
       $address4 = $n['USER_ADDRESS_4'];
       $email = $n['USER_EMAIL'];
       $birthday=$n['USER_BIRTHDAY'];
-
-      session_start();
-      $_SESSION["companyid"]=$Companyid;
-
-      if ($Companyid == 0) {
-      	$CompanyName = "Nikro";
-      }elseif ($Companyid == 1) {
-      	$CompanyName = "Onit";
-      }else{
-      	$CompanyName = "Company 3";
-      }
       
-    }
-
-    if (isset($queary1) == 1) {
-      $n1 = mysqli_fetch_array($queary1);
-      $Userempid = $n1['USER_EMPID'];
     }
   }
   ?>
@@ -87,7 +70,7 @@
 
 
   <div class="one_user_management-form">
-    <form  method="post" name='userupdate' action="php_code.php">
+    <form  method="post" name='userupdateadmin' action="php_code.php">
       <input type="hidden"  class="form-control" name="ID" value="<?php echo $ID; ?>">
       <div class="form-group">
         <label id="N011401">User Display Name :</label>
@@ -95,13 +78,8 @@
       </div>
 
       <div class="form-group">
-        <label id="N011402">Company Name :</label>
-        <input type="text" id="N011002" class="form-control" name="companyidone" value="<?php echo $CompanyName; ?>" readonly>
-      </div>
-
-      <div class="form-group">
-        <label id="N011402">Employee ID :</label>
-        <input type="text" id="N011002" class="form-control" name="companyidone" value="<?php echo $Userempid; ?>" readonly>
+        <label id="N011402">Company ID :</label>
+        <input type="text" id="N011002" class="form-control" name="companyidone" value="<?php echo $Companyid; ?>">
       </div>
 
       <div class="form-group">

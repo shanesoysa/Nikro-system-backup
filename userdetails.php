@@ -74,8 +74,13 @@
 <?php $results = mysqli_query($db, "SELECT * FROM user_details WHERE USER_STATUS!='4' "); ?>
 
 <div class="container">
-   <input id="myInput" type="text" placeholder="Search..">
-
+  <h1>User Details</h1>
+        <div class="text-right">
+      <a href="usermanagement.php" class="btn btn-primary" id="N021501">Add New User</a>
+      <br>
+      </div>
+  <input id="myInput" type="text" placeholder="Search..">
+   
 <div class="overflow-auto">
 <div class="mt-l-2">
 <div class="table-responsive-sm-6">
@@ -90,7 +95,7 @@
       			<th  scope="col" width="0">Action</th>
       		</tr>
       	</thead>
-      	<tbody  id="myTable">
+      	<tbody  id="myTable" >
       	<?php while ($row = mysqli_fetch_array($results)) { ?>
       		<tr scope="row">
       			<td><?php echo $row['USER_LOGIN_NAME']; ?></td>
@@ -98,10 +103,16 @@
             <td class="text-center"><?php echo $row['USER_STATUS']; ?></td>
             <td><?php echo $row['USER_LASTLOGIN_DATETIME']; ?></td>
             <td><?php echo $row['USER_LASTOPERATION_DATETIME']; ?></td>
-      			<td>
-      				<a href="usermanagement.php?edit=<?php echo $row['RECORD_ID']; ?>" class="btn btn-success btn-sm" id="N021502" >User Details</a>
-      			</td>
+            
+    
+            <td>
+        
+              
+            <a href="userdetailform.php?userupdateadmin=<?php echo $row['RECORD_ID']; ?>" class="btn btn-success btn-sm" >User Personal Details</a>
+              
+            </td>
 
+      			</td>
       		</tr>
       	<?php } ?>
         </tbody>	 
@@ -119,6 +130,7 @@ $(document).ready(function(){
     var value = $(this).val().toLowerCase();
     $("#myTable tr").filter(function() {
       $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+      
     });
   });
 });

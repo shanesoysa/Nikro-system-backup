@@ -17,6 +17,7 @@
   <link rel="stylesheet" type="text/css" href="css/nav.css">
   <script type="text/javascript" src="js/nav.js"></script>
 
+
   
   <style type="text/css">
     .alert {
@@ -27,6 +28,9 @@
       margin-left: auto;
       margin-right: auto;
       }
+
+      
+  
 
     .closebtn {
       margin-left: 15px;
@@ -41,8 +45,11 @@
 
     .closebtn:hover {
       color: black;
-      }  
+      }
+  
   </style>
+
+
 
 </head>
 <body>
@@ -59,34 +66,34 @@
 
   <?php if (isset($_SESSION['message'])): ?>
           <?php 
-          echo ' <div class="alert">';
+          echo ' <div class="alert" id="green">';
           echo $_SESSION['message'];
           unset($_SESSION['message']);
           echo '</strong></div>';
           ?>
   <?php endif ?>
 
- <!--  <?php if (isset($_SESSION['message'])): ?>
-          <?php 
-          echo "<script type='text/javascript'>alert('Details Updated');</script>";
-          ?>
-  <?php endif ?> -->
+
+
 <?php $results = mysqli_query($db, "SELECT * FROM user_details WHERE USER_STATUS!='4' "); ?>
 
 <div class="container">
-   <input id="myInput" type="text" placeholder="Search..">
+ <h1>Reset Password</h1>
+<div class="form group">
+  <input id="myInput" type="text" placeholder="Search..">
+</div>
 
 <div class="overflow-auto">
-<div class="mt-l-2">
+<div class="mt-sm-2">
 <div class="table-responsive-sm-6">
       <table class="table table-striped" style="font-size:15px;">
       	<thead>
       		<tr scope="row">
       			<th scope="col" width="0">Username</th>
-            <th scope="col" width="0">User Created Time</th>
-            <th scope="col" width="0">User Status</th>
+            <!-- <th scope="col" width="0">User Created Time</th>
+            <th scope="col" width="0">User Status</th> -->
             <th scope="col" width="0">User Last Login</th>
-            <th scope="col" width="0">User Last Operation</th>  			
+            <!-- <th scope="col" width="0">User Last Operation</th>  --> 			
       			<th  scope="col" width="0">Action</th>
       		</tr>
       	</thead>
@@ -94,14 +101,18 @@
       	<?php while ($row = mysqli_fetch_array($results)) { ?>
       		<tr scope="row">
       			<td><?php echo $row['USER_LOGIN_NAME']; ?></td>
-            <td><?php echo $row['USER_CREATED_TIME']; ?></td>
-            <td class="text-center"><?php echo $row['USER_STATUS']; ?></td>
+         <!--    <td><?php echo $row['USER_CREATED_TIME']; ?></td>
+            <td class="text-center"><?php echo $row['USER_STATUS']; ?></td> -->
             <td><?php echo $row['USER_LASTLOGIN_DATETIME']; ?></td>
-            <td><?php echo $row['USER_LASTOPERATION_DATETIME']; ?></td>
-      			<td>
-      				<a href="usermanagement.php?edit=<?php echo $row['RECORD_ID']; ?>" class="btn btn-success btn-sm" id="N021502" >User Details</a>
-      			</td>
+           <!--  <td><?php echo $row['USER_LASTOPERATION_DATETIME']; ?></td> -->
+    
+            <td>
+              
+              <a href="usermanagement.php?resetpw=<?php echo $row['RECORD_ID']; ?>" class="btn btn-success btn-sm" id="N021503" >Reset password</a>
+              
+            </td>
 
+      			</td>
       		</tr>
       	<?php } ?>
         </tbody>	 
@@ -113,6 +124,7 @@
 </div>
 </div>
 </div>
+
   <script>
 $(document).ready(function(){
   $("#myInput").on("keyup", function() {
@@ -123,6 +135,8 @@ $(document).ready(function(){
   });
 });
 </script>
+
+
 
 </body>
 </html>

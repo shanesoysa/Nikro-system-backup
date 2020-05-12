@@ -66,45 +66,46 @@
           ?>
   <?php endif ?>
 
- <!--  <?php if (isset($_SESSION['message'])): ?>
-          <?php 
-          echo "<script type='text/javascript'>alert('Details Updated');</script>";
-          ?>
-  <?php endif ?> -->
-<?php $results = mysqli_query($db, "SELECT * FROM user_details WHERE USER_STATUS!='4' "); ?>
+<?php $results = mysqli_query($db, "SELECT * FROM leave_process"); ?>
 
 <div class="container">
-   <input id="myInput" type="text" placeholder="Search..">
-
+  <h1>Leave Information</h1>
+    <input id="myInput" type="text" placeholder="Search..">
+      <div class="text-right">
+      <!-- <a href="personalCollection.php" class="btn btn-primary" id="">Add New Worker</a> -->
+      <br>
+      </div>
 <div class="overflow-auto">
 <div class="mt-l-2">
 <div class="table-responsive-sm-6">
       <table class="table table-striped" style="font-size:15px;">
       	<thead>
       		<tr scope="row">
-      			<th scope="col" width="0">Username</th>
-            <th scope="col" width="0">User Created Time</th>
-            <th scope="col" width="0">User Status</th>
-            <th scope="col" width="0">User Last Login</th>
-            <th scope="col" width="0">User Last Operation</th>  			
-      			<th  scope="col" width="0">Action</th>
+      			<th scope="col" width="0">Employee No</th>
+            <th scope="col" width="0">Name</th>
+            <th scope="col" width="0">Date</th>
+            <th scope="col" width="0">Type</th>
+            <th scope="col" width="0">From</th>
+            <th scope="col" width="0">To</th>  			
+            <th scope="col" width="0">Status</th>
+            <th scope="col" width="0">View</th>
       		</tr>
       	</thead>
-      	<tbody  id="myTable">
-      	<?php while ($row = mysqli_fetch_array($results)) { ?>
-      		<tr scope="row">
-      			<td><?php echo $row['USER_LOGIN_NAME']; ?></td>
-            <td><?php echo $row['USER_CREATED_TIME']; ?></td>
-            <td class="text-center"><?php echo $row['USER_STATUS']; ?></td>
-            <td><?php echo $row['USER_LASTLOGIN_DATETIME']; ?></td>
-            <td><?php echo $row['USER_LASTOPERATION_DATETIME']; ?></td>
-      			<td>
-      				<a href="usermanagement.php?edit=<?php echo $row['RECORD_ID']; ?>" class="btn btn-success btn-sm" id="N021502" >User Details</a>
-      			</td>
-
-      		</tr>
-      	<?php } ?>
-        </tbody>	 
+        <tbody id="myTable">
+          <?php while ($row = mysqli_fetch_array($results)) { ?>
+            <tr scope="row">
+            <td><?php echo $row['empid']; ?></td>
+            <td><?php echo $row['username']; ?></td>
+            <td><?php echo $row['applydate']; ?></td>
+            <td class="text-center"><?php echo $row['leavetype']; ?></td>
+            <td><?php echo $row['leavefrom']; ?></td>
+            <td><?php echo $row['leaveto']; ?></td>
+            <td><?php echo $row['status']; ?></td>
+            <td>
+            <a href="leaveviewform.php?recordid=<?php echo $row['recordid']; ?>" class="btn btn-success btn-sm" id="N021502" >view</a></td>
+          </tr>
+        <?php } ?>
+        </tbody>
       </table>
 </div>
 </div>
@@ -113,15 +114,16 @@
 </div>
 </div>
 </div>
-  <script>
-$(document).ready(function(){
-  $("#myInput").on("keyup", function() {
-    var value = $(this).val().toLowerCase();
-    $("#myTable tr").filter(function() {
-      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+
+<script>
+    $(document).ready(function(){
+        $("#myInput").on("keyup", function() {
+            var value = $(this).val().toLowerCase();
+            $("#myTable tr").filter(function() {
+                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+            });
+        });
     });
-  });
-});
 </script>
 
 </body>

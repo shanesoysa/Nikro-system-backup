@@ -1,0 +1,3 @@
+0,Weekend,2020-05-30,casual
+1,Weekend,2020-05-20,casual
+2,Weekend,2020-05-02,casual

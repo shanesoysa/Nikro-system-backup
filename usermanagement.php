@@ -1,6 +1,7 @@
 <?php  include('php_code.php'); ?>
 <?php include('logcheck.php');?>
 
+
 <?php 
 	if (isset($_GET['edit'])) {
 		$ID = $_GET['edit'];
@@ -18,8 +19,9 @@
 			
 		}
 	}
+  else if (isset($_GET['resetpw'])) {
 
-  elseif (isset($_GET['resetpw'])) {
+
     $ID = $_GET['resetpw'];
     $update = true;
     $resetpw = true;
@@ -41,6 +43,7 @@
     $ID = $_GET['userst'];
     $update = true;
     $userst = true;
+
     $rec = mysqli_query($db, "SELECT * FROM user_details WHERE RECORD_ID=$ID");
 
     if (isset($rec) == 1) {
@@ -62,29 +65,20 @@
 
 <html>
 <head>
-	<title> Nikro Management Services </title>
-	<!--  class="form-control" -->
+	  <title>Nikro Management Services</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+  <link rel="stylesheet" type="text/css" href="css/nav.css">
+  <script type="text/javascript" src="js/nav.js"></script>
+	
 
 
 
-  <meta charset="utf-8" />
-  <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
-  <link rel="icon" type="image/png" href="../assets/img/favicon.png">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
- 
-  <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
-  <!--     Fonts and icons     -->
-  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
-  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
-  <!-- CSS Files -->
-  <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
-  <link href="assets/css/paper-dashboard.css?v=2.0.0" rel="stylesheet" />
-  <!-- CSS Just for demo purpose, don't include it in your project -->
-  <link href="assets/demo/demo.css" rel="stylesheet" />
 
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
 
   <style type="text/css">
 
@@ -105,15 +99,15 @@
         padding: 30px;
         border-radius: 10px;
     }
-    .form-control, .btn {
+    .form-control, .btn1 {
         min-height: 38px;
         border-radius: 2px;
     }
-    .btn {        
+    .btn1 {        
         font-size: 15px;
         font-weight: bold;
-        border-radius: 12px;
         width: 20%;
+        border-radius: 12px;
         margin-left: auto;
         margin-right: auto;
     }
@@ -161,7 +155,6 @@
 
       }
 
-      
     </script>
 
 
@@ -170,46 +163,7 @@
 </head>
 <body>
 
-
-
-    <div class="sidebar" data-color="white" data-active-color="danger">
-      <!--
-        Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red | yellow"
-    -->
-      <div class="logo">
-        <a href="http://www.creative-tim.com" class="simple-text logo-mini">
-          <div class="logo-image-small">
-             <img src="assets/img/nikro.png">
-          </div>
-        </a>
-        <a href="http://www.creative-tim.com" class="simple-text logo-normal">
-         NMS
-          
-        </a>
-      </div>
-
-           <div class="sidebar-wrapper">
-        <ul class="nav">
-          <li class="active ">
-            <a href="./dashboard.php">
-              <i class="nc-icon nc-bank"></i>
-              <p>Dashboard</p>
-            </a>
-          </li>
-
-          <li>
-            <a href="./list.php">
-              <i class="nc-icon nc-single-02"></i>
-              <p>User Profile</p>
-            </a>
-          </li>
-
-        </ul>
-      </div>
-    </div>
-
-
-
+<div><?php include 'navigation.php';?></div>
 
 
 <!-- Add new user ------------------------------------------------------------>
@@ -248,8 +202,8 @@
       <input type="Number" id="N021005" class="form-control" name="Usergroup" value="">
     </div>
 
-    <div class="form-group">
-      <button class="btn btn-primary btn-block" id="N021301" type="submit" name="save" >Save</button>
+    <div class="form-group text-center">
+      <button class="btn btn-primary btn1" id="N021301" type="submit" name="save" >Save</button>
     </div>
         
     <?php if (isset($_SESSION['message'])): ?>
@@ -297,8 +251,8 @@
       <input type="Number" class="form-control" id="N021005" name="Usergroup" value="<?php echo $Usergroup; ?>">
     </div>
 
-    <div class="form-group">
-      <button class="btn btn-success btn-block" id="N021301" type="submit" name="update">update</button>     
+    <div class="form-group text-center">
+      <button class="btn btn-success btn1" id="N021301" type="submit" name="update">update</button>     
     </div>
 
 
@@ -318,9 +272,19 @@
 
 <?php elseif ($resetpw==true):?>
 <div class="usermanagement-form">
-  <form method="post" name='myform' action="php_code.php" >
+  <form method="post" name='myform' action="resetpasswordback.php" >
 
     <input type="hidden" class="form-control" name="ID" value="<?php echo $ID; ?>">
+
+    <div class="form-group">
+      <label >Admin Username</label>
+      <input type="text"  id="a1" class="form-control" name="adminusername" value="">
+    </div>
+
+    <div class="form-group">
+      <label >Admin password</label>
+      <input type="Password"  id="a2" class="form-control" name="adminpassword" value="">
+    </div>
 
     <div class="form-group">
       <label id="N021401">Username</label>
@@ -331,7 +295,7 @@
       <label id="N021402">New Password</label>
       <div class="input-group" id="show_hide_password">
         <input type="Password" id="N021002np" class="form-control" name="Password" value="">
-          <div class="input-group-addon">
+          <div id="N23223" class="input-group-addon">
             <input type="checkbox" name="sp" onclick="myFunction()">show
           </div>
       </div>
@@ -342,15 +306,15 @@
       <input type="Password" id="N021003cp" class="form-control" name="Password" value="">
     </div>
     
-    <div class="form-group">
-      <button class="btn btn-danger btn-block" id="N021301" type="submit" name="update" onclick="return validatePassword()">update</button>
+    <div class="form-group text-center">
+      <button class="btn btn-danger btn1" id="N021301" type="submit" name="update" onclick="return validatePassword()">Submit</button>
     </div>
 
-    <?php if (isset($_SESSION['message'])): ?>
+    <?php if (isset($_SESSION['messagecon'])): ?>
       <div class="alert alert-success text-center" role="alert">
         <?php 
-        echo $_SESSION['message']; 
-        unset($_SESSION['message']);
+        echo $_SESSION['messagecon']; 
+        unset($_SESSION['messagecon']);
       ?>
       </div>
     <?php endif ?>
@@ -419,8 +383,8 @@
     </div>
 
 
-    <div class="form-group">
-      <button class="btn btn-primary btn-block" id="N021301" type="submit" name="update">update</button>
+    <div class="form-group text-center">
+      <button class="btn btn-primary btn1" id="N021301" type="submit" name="update">update</button>
     </div>
 
     <?php endif ?>

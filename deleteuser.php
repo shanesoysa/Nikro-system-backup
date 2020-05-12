@@ -74,8 +74,9 @@
 <?php $results = mysqli_query($db, "SELECT * FROM user_details WHERE USER_STATUS!='4' "); ?>
 
 <div class="container">
-   <input id="myInput" type="text" placeholder="Search..">
-
+  <h1>Delete User</h1>
+  <input id="myInput" type="text" placeholder="Search..">
+     
 <div class="overflow-auto">
 <div class="mt-l-2">
 <div class="table-responsive-sm-6">
@@ -83,10 +84,10 @@
       	<thead>
       		<tr scope="row">
       			<th scope="col" width="0">Username</th>
-            <th scope="col" width="0">User Created Time</th>
+         <!--    <th scope="col" width="0">User Created Time</th>
             <th scope="col" width="0">User Status</th>
             <th scope="col" width="0">User Last Login</th>
-            <th scope="col" width="0">User Last Operation</th>  			
+            <th scope="col" width="0">User Last Operation</th>  --> 			
       			<th  scope="col" width="0">Action</th>
       		</tr>
       	</thead>
@@ -94,14 +95,14 @@
       	<?php while ($row = mysqli_fetch_array($results)) { ?>
       		<tr scope="row">
       			<td><?php echo $row['USER_LOGIN_NAME']; ?></td>
-            <td><?php echo $row['USER_CREATED_TIME']; ?></td>
+           <!--  <td><?php echo $row['USER_CREATED_TIME']; ?></td>
             <td class="text-center"><?php echo $row['USER_STATUS']; ?></td>
             <td><?php echo $row['USER_LASTLOGIN_DATETIME']; ?></td>
-            <td><?php echo $row['USER_LASTOPERATION_DATETIME']; ?></td>
-      			<td>
-      				<a href="usermanagement.php?edit=<?php echo $row['RECORD_ID']; ?>" class="btn btn-success btn-sm" id="N021502" >User Details</a>
-      			</td>
+            <td><?php echo $row['USER_LASTOPERATION_DATETIME']; ?></td> -->
 
+      			<td>
+      				<a href="php_code.php?del=<?php echo $row['RECORD_ID']; ?>" class="btn btn-danger btn-sm" id="N021505">Delete</a>
+      			</td>
       		</tr>
       	<?php } ?>
         </tbody>	 

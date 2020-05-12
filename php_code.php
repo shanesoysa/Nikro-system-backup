@@ -1,8 +1,11 @@
+<?php include('password_encrypt.php');?>
+
 <?php 
+
 
 	session_start();
 
-	$timeout = 10 * 60; // Number of seconds until it times out.
+	$timeout = 30 * 60; // Number of seconds until it times out.
 	// Check if the timeout field exists.
 	if(isset($_SESSION['timeout'])) {
     // See if the number of seconds since the last
@@ -17,9 +20,6 @@
 	// Update the timout field with the current time.
 	 $_SESSION['timeout'] = time();
 
-
-
-
 	$db = mysqli_connect('localhost', 'root', '', 'user_db');
 
 	//git check
@@ -33,8 +33,7 @@
 	$userst=false;
 	$update = false;
 
-	
-	
+		
 
 	if (isset($_POST['save'])) {
 		$ID =$_POST['ID'];
@@ -94,6 +93,7 @@
 	 	header('location: list.php');
 	}
 	else{
+		
 	$_SESSION['message'] = "update failed!"; 
 	header('location: usermanagement.php');
 
@@ -116,12 +116,12 @@
 	$birthday=$_POST['birthday'];
 	$email=$_POST['email'];
 
-	$update_one_user=mysqli_query($db, "UPDATE user_p_details SET USER_DISPLAY_NAME='$dispalayname', USER_TELEPHONE1='$telephone1', USER_TELEPHONE2='$telephone2', USER_ADDRESS_1='$address1', USER_ADDRESS_2=' $address2', USER_ADDRESS_3=' $address3' , USER_ADDRESS_4='$address4', USER_BIRTHDAY='$birthday', USER_EMAIL='$email' WHERE RECORD_ID='$id'");
+	$update_one_user=mysqli_query($db, "UPDATE user_p_details SET USER_DISPLAY_NAME='$dispalayname', USER_TELEPHONE1='$telephone1', USER_TELEPHONE2='$telephone2', USER_ADDRESS_1='$address1', USER_ADDRESS_2='$address2', USER_ADDRESS_3='$address3' , USER_ADDRESS_4='$address4', USER_BIRTHDAY='$birthday', USER_EMAIL='$email' WHERE RECORD_ID='$id'");
 
 	if($update_one_user){
 	
 	$_SESSION['messageone'] = "Updated!"; 
-	header('location: index.php');
+	header('location: home.php');
 	}
 	else{
 	$_SESSION['messageone'] = "update failed!"; 
@@ -130,6 +130,42 @@
 	}
 
 	}
+
+//-------------------------------------------------------------------------//-------------------------------------
+
+if (isset($_POST['userupdateadmin'])) {
+	$id = $_POST['ID'];
+	$dispalayname=$_POST['displayname'];
+	$telephone1=$_POST['telephone1'];
+	$telephone2=$_POST['telephone2'];
+	$address1=$_POST['address1'];
+	$address2=$_POST['address2'];
+	$address3=$_POST['address3'];
+	$address4=$_POST['address4'];
+	$birthday=$_POST['birthday'];
+	$email=$_POST['email'];
+
+	$update_one_user=mysqli_query($db, "UPDATE user_p_details SET USER_DISPLAY_NAME='$dispalayname', USER_TELEPHONE1='$telephone1', USER_TELEPHONE2='$telephone2', USER_ADDRESS_1='$address1', USER_ADDRESS_2='$address2', USER_ADDRESS_3='$address3' , USER_ADDRESS_4='$address4', USER_BIRTHDAY='$birthday', USER_EMAIL='$email' WHERE RECORD_ID='$id'");
+
+	if($update_one_user){
+	
+	$_SESSION['messageone'] = "Updated!"; 
+	header('location: home.php');
+	}
+	else{
+	$_SESSION['messageone'] = "update failed!"; 
+	header('location: oneusermanagement.php');
+
+	}
+
+	}
+
+
+
+
+
+
+// ----------------------------------------------------------------------------------------------------------------
 
 
 
@@ -172,6 +208,8 @@
 
 		
          $_SESSION['login_user'] = $Username;
+         $_SESSION['login_password'] = $Password;
+
 
 			$get_current_login_dateTime = "UPDATE user_details SET USER_LASTLOGIN_DATETIME='$currentlogintime' WHERE USER_LOGIN_NAME='$Username' ";
 			$reset_login_attemps = "UPDATE user_details SET USER_LOGIN_ATTEMPTS='0' WHERE USER_LOGIN_NAME='$Username' ";
@@ -183,6 +221,8 @@
 
 			$login_display_name=mysqli_query($db,"SELECT user_p_details.USER_DISPLAY_NAME FROM user_p_details INNER JOIN user_details ON user_p_details.RECORD_ID=user_details.RECORD_ID WHERE user_details.USER_LOGIN_NAME='$Username'");
 
+			$loginuser_company_id=mysqli_query($db,"SELECT USER_COMPANY_ID FROM user_details WHERE USER_LOGIN_NAME='$Username'");
+
 			$login_id=mysqli_query($db,"SELECT user_p_details.RECORD_ID FROM user_p_details INNER JOIN user_details ON user_p_details.RECORD_ID=user_details.RECORD_ID WHERE user_details.USER_LOGIN_NAME='$Username'");
 
 			if(isset($login_display_name) ){
@@ -191,7 +231,16 @@
  			$User_display_name = $n['USER_DISPLAY_NAME'];
 
  			
- 			} 
+ 			}
+
+ 			if(isset($loginuser_company_id) ){
+
+ 			$n = mysqli_fetch_array($loginuser_company_id);
+ 			$loginuser_company_id = $n['USER_COMPANY_ID'];
+ 			$_SESSION['loginuser_company_id']=$loginuser_company_id;
+
+ 			
+ 			}
 
  			if(isset($login_id)){
 
@@ -244,7 +293,7 @@
 
         </style>
 
-        <META HTTP-EQUIV="refresh" CONTENT="3;URL=dashboard.php">
+        <META HTTP-EQUIV="refresh" CONTENT="3;URL=home.php">
         </head>
         <body>
         	<div class="mse">
@@ -340,35 +389,12 @@
 		
 
 
-//--------------------------------------------------------------------------------------------------
-
-
-function my_simple_crypt( $string, $action = 'e' ) {
-    
-    $secret_key = 'my_simple_secret_key';
-    $secret_iv = 'my_simple_secret_iv';
- 
-    $output = false;
-    $encrypt_method = "AES-256-CBC";
-    $key = hash( 'sha256', $secret_key );
-    $iv = substr( hash( 'sha256', $secret_iv ), 0, 16 );
- 
-    if( $action == 'e' ) {
-        $output = base64_encode( openssl_encrypt( $string, $encrypt_method, $key, 0, $iv ) );
-    }
-    else if( $action == 'd' ){
-        $output = openssl_decrypt( base64_decode( $string ), $encrypt_method, $key, 0, $iv );
-    }
- 
-    return $output;
-}
 
 
 
 //-------------------------------------------------------------------------------------------
 	if (isset($_POST['logout'])) {
 
-	
 	session_destroy();
 	unset($_SESSION['login_user']); 
 	header('location: index.php');
